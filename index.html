@@ -209,37 +209,65 @@
       pointer-events:none;
       z-index:0;
     }
-
+    
     .particle{
       position:absolute;
-      width:6px;
-      height:6px;
       border-radius:50%;
-      background:radial-gradient(circle at 35% 35%, #fffef8, var(--champagne-2));
+      background:
+        radial-gradient(circle at 35% 35%,
+          #fffef8 0%,
+          #fff1b8 18%,
+          #f5df9f 42%,
+          #ddb76a 68%,
+          rgba(221,183,106,.12) 100%);
       box-shadow:
-        0 0 8px rgba(245,223,159,.32),
-        0 0 14px rgba(245,223,159,.14);
-      opacity:.45;
+        0 0 10px rgba(255,232,170,.42),
+        0 0 18px rgba(245,223,159,.24),
+        0 0 28px rgba(221,183,106,.14);
+      opacity:.58;
       animation:floatGold linear infinite;
       will-change:transform, opacity;
     }
-
-    .particle.small{ width:4px; height:4px; opacity:.34; }
-    .particle.large{ width:8px; height:8px; opacity:.56; }
-
+    
+    .particle.small{
+      width:4px;
+      height:4px;
+      opacity:.44;
+    }
+    
+    .particle.medium{
+      width:6px;
+      height:6px;
+      opacity:.56;
+    }
+    
+    .particle.large{
+      width:8px;
+      height:8px;
+      opacity:.68;
+    }
+    
     @keyframes floatGold{
       0%{
-        transform:translate3d(0,0,0) scale(.95);
+        transform:translate3d(0,0,0) scale(.92);
         opacity:0;
       }
-      8%{ opacity:.45; }
-      50%{
-        transform:translate3d(var(--dx), -42vh, 0) scale(1.05);
+      10%{
+        opacity:.65;
+      }
+      55%{
+        transform:translate3d(var(--dx), -45vh, 0) scale(1.08);
       }
       100%{
-        transform:translate3d(calc(var(--dx) * 1.25), -90vh, 0) scale(.9);
+        transform:translate3d(calc(var(--dx) * 1.25), -92vh, 0) scale(.9);
         opacity:0;
       }
+    }
+    
+    @media (max-width: 720px){
+      .particle.small{ width:3px; height:3px; }
+      .particle.medium{ width:5px; height:5px; }
+      .particle.large{ width:7px; height:7px; }
     }
 
     /* --------------------------------
@@ -469,23 +497,29 @@
     /* --------------------------------
        ANATOMICAL TOOTH
     -------------------------------- */
+    
     .tooth-stage{
       position:absolute;
       left:1.5%;
       top:52%;
-      width:min(24vw, 290px);
+      width:min(25vw, 300px);
       aspect-ratio:1;
       transform:translateY(-50%);
       z-index:1;
       pointer-events:none;
-      opacity:.18;
+      opacity:.22;
     }
     
-    .tooth-wrap{
+    .tooth-png{
       width:100%;
       height:100%;
+      object-fit:contain;
+      display:block;
       animation:toothFloat 6s ease-in-out infinite;
-      filter:drop-shadow(0 18px 26px rgba(0,0,0,.16));
+      filter:
+        drop-shadow(0 18px 26px rgba(0,0,0,.18))
+        brightness(1.02)
+        saturate(1.04);
     }
     
     .tooth-shadow{
@@ -501,18 +535,9 @@
       animation:shadowPulse 6s ease-in-out infinite;
     }
     
-    .tooth-svg{
-      width:100%;
-      height:100%;
-      overflow:visible;
-    }
-    
-    .tooth-shine-1{ animation:shineMove 4.3s ease-in-out infinite; }
-    .tooth-shine-2{ animation:shineMove2 5.2s ease-in-out infinite; }
-    
     @keyframes toothFloat{
       0%,100%{ transform:translateY(0) rotate(-1deg); }
-      50%{ transform:translateY(-7px) rotate(.9deg); }
+      50%{ transform:translateY(-8px) rotate(1deg); }
     }
     
     @keyframes shadowPulse{
@@ -520,28 +545,14 @@
       50%{ transform:translateX(-50%) scale(.93); opacity:.12; }
     }
     
-    @keyframes shineMove{
-      0%,15%{ opacity:0; transform:translate(-8px, 7px); }
-      36%{ opacity:.78; transform:translate(0,0); }
-      58%{ opacity:.10; }
-      100%{ opacity:0; transform:translate(13px,-10px); }
-    }
-    
-    @keyframes shineMove2{
-      0%,10%{ opacity:0; transform:translate(-6px, 9px); }
-      42%{ opacity:.62; transform:translate(2px,-1px); }
-      64%{ opacity:.12; }
-      100%{ opacity:0; transform:translate(12px,-12px); }
-    }
-    
     @media (max-width: 1060px){
       .tooth-stage{
         left:auto;
         right:2%;
         top:15%;
-        width:min(27vw, 190px);
+        width:min(28vw, 200px);
         transform:none;
-        opacity:.09;
+        opacity:.10;
       }
     }
     
@@ -549,10 +560,11 @@
       .tooth-stage{
         right:8px;
         top:88px;
-        width:32vw;
-        opacity:.06;
+        width:34vw;
+        opacity:.07;
       }
     }
+
     
     /* --------------------------------
        CARD
@@ -593,70 +605,100 @@
       pointer-events:none;
     }
 
+
     .logo-wrap{
       display:grid;
       place-items:center;
       margin-bottom:18px;
     }
-    .logo-inside{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      border-radius:50%;
+    
+    .logo-frame{
       position:relative;
-      z-index:1;
-    }
-    .monogram{
-      position:relative;
-      width:124px;
-      height:124px;
+      width:126px;
+      height:126px;
       border-radius:50%;
+      overflow:hidden;
+      isolation:isolate;
       display:grid;
       place-items:center;
       background:
-        radial-gradient(circle at 30% 25%, rgba(255,255,255,.18), rgba(255,255,255,.05)),
+        radial-gradient(circle at 30% 25%, rgba(255,255,255,.20), rgba(255,255,255,.05)),
         linear-gradient(180deg, rgba(245,223,159,.10), rgba(255,255,255,.03));
-      border:1px solid rgba(245,223,159,.16);
+      border:1px solid rgba(245,223,159,.18);
       box-shadow:
         inset 0 2px 10px rgba(255,255,255,.08),
         0 14px 30px rgba(0,0,0,.18);
-      overflow:hidden;
       animation:logoFloat 5.6s ease-in-out infinite;
     }
-
-    .monogram::before{
+    
+    .logo-frame::before{
       content:"";
       position:absolute;
-      inset:8px;
+      inset:7px;
       border-radius:50%;
       border:1px solid rgba(245,223,159,.14);
+      z-index:2;
+      pointer-events:none;
     }
-
-    .monogram::after{
+    
+    .logo-frame::after{
       content:"";
       position:absolute;
-      inset:-10%;
-      background:linear-gradient(120deg, transparent 22%, rgba(255,248,227,.16) 48%, transparent 76%);
-      transform:translateX(-130%) rotate(12deg);
-      animation:monoSweep 3.8s ease-in-out infinite;
+      inset:-18%;
+      z-index:3;
+      pointer-events:none;
+      background:
+        linear-gradient(
+          120deg,
+          transparent 18%,
+          rgba(255,248,227,.08) 34%,
+          rgba(255,248,227,.30) 48%,
+          rgba(255,248,227,.08) 62%,
+          transparent 78%
+        );
+      transform:translateX(-140%) rotate(12deg);
+      animation:logoShine 3.8s ease-in-out infinite;
+      mix-blend-mode:screen;
     }
-
-    .monogram-svg{
-      width:72%;
-      height:72%;
-      position:relative;
+    
+    .logo-inside{
+      position:absolute;
+      inset:8px;
+      width:calc(100% - 16px);
+      height:calc(100% - 16px);
+      display:block;
+      border-radius:50%;
+      object-fit:cover;
+      object-position:center;
       z-index:1;
+      transform:scale(1.02);
+      box-shadow:inset 0 1px 4px rgba(255,255,255,.08);
     }
-
-    @keyframes monoSweep{
-      0%,18%{ transform:translateX(-130%) rotate(12deg); }
-      45%{ transform:translateX(130%) rotate(12deg); }
-      100%{ transform:translateX(130%) rotate(12deg); }
-    }
-
+    
     @keyframes logoFloat{
       0%,100%{ transform:translateY(0); }
       50%{ transform:translateY(-4px); }
+    }
+    
+    @keyframes logoShine{
+      0%,18%{
+        transform:translateX(-140%) rotate(12deg);
+        opacity:0;
+      }
+      30%{
+        opacity:.65;
+      }
+      48%{
+        transform:translateX(140%) rotate(12deg);
+        opacity:1;
+      }
+      60%{
+        opacity:.14;
+      }
+      100%{
+        transform:translateX(140%) rotate(12deg);
+        opacity:0;
+      }
     }
 
     .doctor-name{
@@ -1072,18 +1114,7 @@
   </div>
 
   <!-- Gold particles -->
-  <div class="particles" aria-hidden="true">
-    <span class="particle small" style="left:8%; bottom:-10%; animation-duration:18s; animation-delay:-3s; --dx:18px;"></span>
-    <span class="particle" style="left:16%; bottom:-14%; animation-duration:22s; animation-delay:-8s; --dx:-16px;"></span>
-    <span class="particle large" style="left:26%; bottom:-16%; animation-duration:25s; animation-delay:-4s; --dx:14px;"></span>
-    <span class="particle small" style="left:38%; bottom:-12%; animation-duration:20s; animation-delay:-10s; --dx:-14px;"></span>
-    <span class="particle" style="left:49%; bottom:-18%; animation-duration:24s; animation-delay:-6s; --dx:18px;"></span>
-    <span class="particle large" style="left:60%; bottom:-15%; animation-duration:27s; animation-delay:-13s; --dx:-18px;"></span>
-    <span class="particle small" style="left:71%; bottom:-14%; animation-duration:21s; animation-delay:-9s; --dx:15px;"></span>
-    <span class="particle" style="left:82%; bottom:-12%; animation-duration:23s; animation-delay:-11s; --dx:-15px;"></span>
-    <span class="particle large" style="left:91%; bottom:-16%; animation-duration:26s; animation-delay:-5s; --dx:16px;"></span>
-    <span class="particle small" style="left:55%; bottom:-24%; animation-duration:29s; animation-delay:-15s; --dx:-12px;"></span>
-  </div>
+  <div class="particles" id="particles" aria-hidden="true"></div>
 
   <main class="page">
     <section class="shell">
@@ -1101,130 +1132,8 @@
       <!-- Anatomically inspired tooth -->
       
       <div class="tooth-stage" aria-hidden="true">
-        <div class="tooth-shadow"></div>
-        <div class="tooth-wrap">
-          <svg class="tooth-svg" viewBox="0 0 420 420" fill="none">
-            <defs>
-              <linearGradient id="toothBodyReal" x1="110" y1="54" x2="290" y2="352" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="#ffffff"/>
-                <stop offset=".26" stop-color="#f9fbfd"/>
-                <stop offset=".58" stop-color="#edf3f7"/>
-                <stop offset="1" stop-color="#d1dbe2"/>
-              </linearGradient>
-      
-              <linearGradient id="toothRidgeReal" x1="238" y1="82" x2="332" y2="300" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="#f6fafc"/>
-                <stop offset="1" stop-color="#c7d1d9"/>
-              </linearGradient>
-      
-              <linearGradient id="toothRootReal" x1="170" y1="238" x2="270" y2="350" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="#eef4f8" stop-opacity="0"/>
-                <stop offset="1" stop-color="#b6c2cc" stop-opacity=".62"/>
-              </linearGradient>
-      
-              <filter id="dropToothReal" x="42" y="44" width="336" height="334" filterUnits="userSpaceOnUse">
-                <feDropShadow dx="0" dy="14" stdDeviation="10" flood-color="#000" flood-opacity=".18"/>
-              </filter>
-            </defs>
-      
-            <g filter="url(#dropToothReal)">
-              <!-- main anatomical molar silhouette -->
-              <path d="M210 58
-                       C192 58 173 63 158 74
-                       C145 84 136 99 129 114
-                       C118 138 119 164 126 186
-                       C133 205 145 219 151 234
-                       C157 249 160 264 163 286
-                       C167 315 177 334 193 334
-                       C204 334 211 326 217 307
-                       L226 278
-                       L235 307
-                       C241 326 248 334 259 334
-                       C275 334 285 315 289 286
-                       C292 264 295 249 301 234
-                       C307 219 319 205 326 186
-                       C333 164 334 138 323 114
-                       C316 99 307 84 294 74
-                       C279 63 260 58 242 58
-                       C235 58 229 60 224 63
-                       C219 60 216 58 210 58Z"
-                    fill="url(#toothBodyReal)"/>
-      
-              <!-- crown cusp volume -->
-              <path d="M149 92
-                       C160 79 180 72 199 72
-                       C205 72 210 74 214 77
-                       C219 74 224 72 230 72
-                       C249 72 269 79 280 92
-                       C287 101 290 111 287 120
-                       C283 131 273 136 262 135
-                       C249 134 237 127 226 121
-                       C221 118 217 116 214 116
-                       C211 116 207 118 202 121
-                       C191 127 179 134 166 135
-                       C155 136 145 131 141 120
-                       C138 111 142 101 149 92Z"
-                    fill="#ffffff" opacity=".92"/>
-      
-              <!-- side contour for depth -->
-              <path d="M247 74
-                       C274 78 295 92 307 111
-                       C324 137 321 170 308 193
-                       C298 211 293 226 291 251
-                       C289 279 281 306 269 322
-                       C272 309 274 295 276 280
-                       C280 252 285 237 298 215
-                       C314 189 318 157 306 132
-                       C296 111 278 90 247 74Z"
-                    fill="url(#toothRidgeReal)" opacity=".74"/>
-      
-              <!-- cervical / root shading -->
-              <path d="M171 236
-                       C178 252 181 265 183 286
-                       C186 309 191 322 198 324
-                       C204 326 208 319 213 302
-                       L222 273
-                       L231 302
-                       C236 319 240 326 246 324
-                       C253 322 258 309 261 286
-                       C263 265 266 252 273 236
-                       C268 261 270 298 258 318
-                       C251 329 242 337 231 338
-                       C220 339 215 332 214 329
-                       C213 332 208 339 197 338
-                       C186 337 177 329 170 318
-                       C158 298 160 261 171 236Z"
-                    fill="url(#toothRootReal)"/>
-      
-              <!-- enamel highlights -->
-              <path class="tooth-shine-1"
-                    d="M154 108
-                       C142 123 136 143 138 164
-                       C139 173 147 175 152 168
-                       C157 161 160 151 164 138
-                       C169 126 175 113 186 101
-                       C189 97 183 92 177 94
-                       C168 97 160 101 154 108Z"
-                    fill="rgba(255,255,255,.86)"/>
-      
-              <path class="tooth-shine-2"
-                    d="M243 97
-                       C258 105 270 118 276 134
-                       C279 141 289 139 289 131
-                       C290 122 283 112 276 104
-                       C268 96 257 89 245 85
-                       C238 83 237 93 243 97Z"
-                    fill="rgba(255,255,255,.48)"/>
-      
-              <path class="tooth-shine-1"
-                    d="M194 72
-                       C188 77 183 84 181 93
-                       C179 99 184 102 189 99
-                       C196 95 203 85 207 76
-                       C209 71 199 68 194 72Z"
-                    fill="rgba(255,255,255,.50)"/>
-            </g>
-          </svg>
+        <div class="tooth-shadow">
+          <img src="./tooth.png" alt="" class="tooth-png" />
         </div>
       </div>
 
@@ -1459,6 +1368,36 @@
     const igMeta = document.getElementById("igMeta");
     const bottomNote = document.getElementById("bottomNote");
     const langButtons = document.querySelectorAll(".lang-btn");
+
+    const particlesContainer = document.getElementById("particles");
+  
+    function createParticles() {
+      particlesContainer.innerHTML = "";
+  
+      const isMobile = window.innerWidth <= 720;
+      const count = isMobile ? 26 : 46;
+  
+      for (let i = 0; i < count; i++) {
+        const p = document.createElement("span");
+        p.className = "particle";
+  
+        const sizeRoll = Math.random();
+        if (sizeRoll < 0.34) p.classList.add("small");
+        else if (sizeRoll < 0.78) p.classList.add("medium");
+        else p.classList.add("large");
+  
+        p.style.left = Math.random() * 100 + "%";
+        p.style.bottom = (-10 - Math.random() * 30) + "%";
+        p.style.animationDuration = (16 + Math.random() * 12) + "s";
+        p.style.animationDelay = (-Math.random() * 18) + "s";
+        p.style.setProperty("--dx", ((Math.random() * 32) - 16) + "px");
+  
+        particlesContainer.appendChild(p);
+      }
+    }
+  
+    createParticles();
+    window.addEventListener("resize", createParticles);
 
     function setIntroTitle(lines){
       introTitle.innerHTML = `
