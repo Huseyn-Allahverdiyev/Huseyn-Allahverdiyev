@@ -471,69 +471,89 @@
     -------------------------------- */
     .tooth-stage{
       position:absolute;
-      left:2%;
+      left:1.5%;
       top:52%;
-      width:min(25vw, 300px);
+      width:min(24vw, 290px);
       aspect-ratio:1;
       transform:translateY(-50%);
       z-index:1;
       pointer-events:none;
-      opacity:.24;
+      opacity:.18;
     }
-
+    
     .tooth-wrap{
       width:100%;
       height:100%;
       animation:toothFloat 6s ease-in-out infinite;
-      filter:drop-shadow(0 20px 28px rgba(0,0,0,.18));
+      filter:drop-shadow(0 18px 26px rgba(0,0,0,.16));
     }
-
+    
     .tooth-shadow{
       position:absolute;
       left:50%;
-      bottom:5%;
+      bottom:6%;
       transform:translateX(-50%);
-      width:56%;
-      height:11%;
+      width:54%;
+      height:10%;
       border-radius:50%;
-      background:radial-gradient(ellipse at center, rgba(0,0,0,.28), rgba(0,0,0,.06), transparent 72%);
+      background:radial-gradient(ellipse at center, rgba(0,0,0,.24), rgba(0,0,0,.05), transparent 72%);
       filter:blur(8px);
       animation:shadowPulse 6s ease-in-out infinite;
     }
-
+    
     .tooth-svg{
       width:100%;
       height:100%;
       overflow:visible;
     }
-
-    .tooth-shine-1{ animation:shineMove 4.2s ease-in-out infinite; }
-    .tooth-shine-2{ animation:shineMove2 5s ease-in-out infinite; }
-
+    
+    .tooth-shine-1{ animation:shineMove 4.3s ease-in-out infinite; }
+    .tooth-shine-2{ animation:shineMove2 5.2s ease-in-out infinite; }
+    
     @keyframes toothFloat{
       0%,100%{ transform:translateY(0) rotate(-1deg); }
-      50%{ transform:translateY(-8px) rotate(1deg); }
+      50%{ transform:translateY(-7px) rotate(.9deg); }
     }
-
+    
     @keyframes shadowPulse{
-      0%,100%{ transform:translateX(-50%) scale(1); opacity:.22; }
-      50%{ transform:translateX(-50%) scale(.92); opacity:.14; }
+      0%,100%{ transform:translateX(-50%) scale(1); opacity:.18; }
+      50%{ transform:translateX(-50%) scale(.93); opacity:.12; }
     }
-
+    
     @keyframes shineMove{
-      0%,15%{ opacity:0; transform:translate(-10px, 8px); }
-      36%{ opacity:.82; transform:translate(0,0); }
-      58%{ opacity:.12; }
-      100%{ opacity:0; transform:translate(15px,-12px); }
+      0%,15%{ opacity:0; transform:translate(-8px, 7px); }
+      36%{ opacity:.78; transform:translate(0,0); }
+      58%{ opacity:.10; }
+      100%{ opacity:0; transform:translate(13px,-10px); }
     }
-
+    
     @keyframes shineMove2{
-      0%,10%{ opacity:0; transform:translate(-7px, 10px); }
-      42%{ opacity:.68; transform:translate(2px,-1px); }
-      64%{ opacity:.14; }
-      100%{ opacity:0; transform:translate(14px,-14px); }
+      0%,10%{ opacity:0; transform:translate(-6px, 9px); }
+      42%{ opacity:.62; transform:translate(2px,-1px); }
+      64%{ opacity:.12; }
+      100%{ opacity:0; transform:translate(12px,-12px); }
     }
-
+    
+    @media (max-width: 1060px){
+      .tooth-stage{
+        left:auto;
+        right:2%;
+        top:15%;
+        width:min(27vw, 190px);
+        transform:none;
+        opacity:.09;
+      }
+    }
+    
+    @media (max-width: 720px){
+      .tooth-stage{
+        right:8px;
+        top:88px;
+        width:32vw;
+        opacity:.06;
+      }
+    }
+    
     /* --------------------------------
        CARD
     -------------------------------- */
@@ -578,7 +598,14 @@
       place-items:center;
       margin-bottom:18px;
     }
-
+    .logo-inside{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      border-radius:50%;
+      position:relative;
+      z-index:1;
+    }
     .monogram{
       position:relative;
       width:124px;
@@ -1072,111 +1099,135 @@
       </div>
 
       <!-- Anatomically inspired tooth -->
+      
       <div class="tooth-stage" aria-hidden="true">
         <div class="tooth-shadow"></div>
         <div class="tooth-wrap">
           <svg class="tooth-svg" viewBox="0 0 420 420" fill="none">
             <defs>
-              <linearGradient id="toothBody" x1="110" y1="58" x2="286" y2="350" gradientUnits="userSpaceOnUse">
+              <linearGradient id="toothBodyReal" x1="110" y1="54" x2="290" y2="352" gradientUnits="userSpaceOnUse">
                 <stop offset="0" stop-color="#ffffff"/>
-                <stop offset=".28" stop-color="#f8fbfd"/>
-                <stop offset=".63" stop-color="#e9f0f5"/>
-                <stop offset="1" stop-color="#cfd8df"/>
+                <stop offset=".26" stop-color="#f9fbfd"/>
+                <stop offset=".58" stop-color="#edf3f7"/>
+                <stop offset="1" stop-color="#d1dbe2"/>
               </linearGradient>
-              <linearGradient id="toothSide" x1="250" y1="96" x2="334" y2="300" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="#f5f9fc"/>
-                <stop offset="1" stop-color="#cad4db"/>
+      
+              <linearGradient id="toothRidgeReal" x1="238" y1="82" x2="332" y2="300" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#f6fafc"/>
+                <stop offset="1" stop-color="#c7d1d9"/>
               </linearGradient>
-              <linearGradient id="toothRootShade" x1="166" y1="230" x2="270" y2="362" gradientUnits="userSpaceOnUse">
+      
+              <linearGradient id="toothRootReal" x1="170" y1="238" x2="270" y2="350" gradientUnits="userSpaceOnUse">
                 <stop offset="0" stop-color="#eef4f8" stop-opacity="0"/>
-                <stop offset="1" stop-color="#b8c5cf" stop-opacity=".62"/>
+                <stop offset="1" stop-color="#b6c2cc" stop-opacity=".62"/>
               </linearGradient>
-              <filter id="toothDrop" x="40" y="40" width="340" height="340" filterUnits="userSpaceOnUse">
-                <feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#000" flood-opacity=".18"/>
+      
+              <filter id="dropToothReal" x="42" y="44" width="336" height="334" filterUnits="userSpaceOnUse">
+                <feDropShadow dx="0" dy="14" stdDeviation="10" flood-color="#000" flood-opacity=".18"/>
               </filter>
             </defs>
-
-            <g filter="url(#toothDrop)">
-              <!-- main molar body -->
-              <path d="M210 62
-                       C177 62 145 75 126 102
-                       C101 137 108 185 129 216
-                       C145 239 149 260 153 293
-                       C156 322 167 341 184 341
-                       C197 341 204 332 210 313
-                       L220 279
-                       L230 313
-                       C236 332 243 341 256 341
-                       C273 341 284 322 287 293
-                       C291 260 295 239 311 216
-                       C332 185 339 137 314 102
-                       C295 75 263 62 230 62
-                       C223 62 216 64 210 68
-                       C204 64 197 62 190 62
-                       Z"
-                    fill="url(#toothBody)"/>
-
-              <!-- side contour -->
-              <path d="M245 73
-                       C274 79 297 95 311 117
-                       C331 149 327 187 312 214
-                       C300 236 295 252 293 281
-                       C291 309 283 327 271 334
-                       C274 322 276 309 278 295
-                       C282 262 288 246 302 222
-                       C320 194 324 157 310 129
-                       C299 106 279 87 245 73Z"
-                    fill="url(#toothSide)" opacity=".75"/>
-
-              <!-- root shading -->
-              <path d="M165 235
-                       C174 255 177 269 180 294
-                       C182 315 187 328 194 330
-                       C200 331 204 323 209 306
-                       L219 274
-                       L229 306
-                       C234 323 238 331 244 330
-                       C251 328 256 315 258 294
-                       C261 269 264 255 273 235
-                       C267 264 269 306 254 328
-                       C246 339 237 345 226 345
-                       C216 345 212 338 210 335
-                       C208 338 204 345 194 345
-                       C183 345 174 339 166 328
-                       C151 306 153 264 165 235Z"
-                    fill="url(#toothRootShade)"/>
-
+      
+            <g filter="url(#dropToothReal)">
+              <!-- main anatomical molar silhouette -->
+              <path d="M210 58
+                       C192 58 173 63 158 74
+                       C145 84 136 99 129 114
+                       C118 138 119 164 126 186
+                       C133 205 145 219 151 234
+                       C157 249 160 264 163 286
+                       C167 315 177 334 193 334
+                       C204 334 211 326 217 307
+                       L226 278
+                       L235 307
+                       C241 326 248 334 259 334
+                       C275 334 285 315 289 286
+                       C292 264 295 249 301 234
+                       C307 219 319 205 326 186
+                       C333 164 334 138 323 114
+                       C316 99 307 84 294 74
+                       C279 63 260 58 242 58
+                       C235 58 229 60 224 63
+                       C219 60 216 58 210 58Z"
+                    fill="url(#toothBodyReal)"/>
+      
+              <!-- crown cusp volume -->
+              <path d="M149 92
+                       C160 79 180 72 199 72
+                       C205 72 210 74 214 77
+                       C219 74 224 72 230 72
+                       C249 72 269 79 280 92
+                       C287 101 290 111 287 120
+                       C283 131 273 136 262 135
+                       C249 134 237 127 226 121
+                       C221 118 217 116 214 116
+                       C211 116 207 118 202 121
+                       C191 127 179 134 166 135
+                       C155 136 145 131 141 120
+                       C138 111 142 101 149 92Z"
+                    fill="#ffffff" opacity=".92"/>
+      
+              <!-- side contour for depth -->
+              <path d="M247 74
+                       C274 78 295 92 307 111
+                       C324 137 321 170 308 193
+                       C298 211 293 226 291 251
+                       C289 279 281 306 269 322
+                       C272 309 274 295 276 280
+                       C280 252 285 237 298 215
+                       C314 189 318 157 306 132
+                       C296 111 278 90 247 74Z"
+                    fill="url(#toothRidgeReal)" opacity=".74"/>
+      
+              <!-- cervical / root shading -->
+              <path d="M171 236
+                       C178 252 181 265 183 286
+                       C186 309 191 322 198 324
+                       C204 326 208 319 213 302
+                       L222 273
+                       L231 302
+                       C236 319 240 326 246 324
+                       C253 322 258 309 261 286
+                       C263 265 266 252 273 236
+                       C268 261 270 298 258 318
+                       C251 329 242 337 231 338
+                       C220 339 215 332 214 329
+                       C213 332 208 339 197 338
+                       C186 337 177 329 170 318
+                       C158 298 160 261 171 236Z"
+                    fill="url(#toothRootReal)"/>
+      
               <!-- enamel highlights -->
               <path class="tooth-shine-1"
                     d="M154 108
-                       C139 126 132 149 135 174
-                       C136 184 145 186 151 178
-                       C157 170 161 158 165 143
-                       C170 129 176 114 189 99
-                       C193 95 186 89 179 91
-                       C169 94 160 100 154 108Z"
-                    fill="rgba(255,255,255,.88)"/>
-
+                       C142 123 136 143 138 164
+                       C139 173 147 175 152 168
+                       C157 161 160 151 164 138
+                       C169 126 175 113 186 101
+                       C189 97 183 92 177 94
+                       C168 97 160 101 154 108Z"
+                    fill="rgba(255,255,255,.86)"/>
+      
               <path class="tooth-shine-2"
-                    d="M243 98
-                       C260 107 273 121 280 139
-                       C284 148 294 145 295 136
-                       C296 126 288 114 279 104
-                       C270 95 257 87 244 83
-                       C237 81 236 93 243 98Z"
+                    d="M243 97
+                       C258 105 270 118 276 134
+                       C279 141 289 139 289 131
+                       C290 122 283 112 276 104
+                       C268 96 257 89 245 85
+                       C238 83 237 93 243 97Z"
                     fill="rgba(255,255,255,.48)"/>
-
+      
               <path class="tooth-shine-1"
-                    d="M194 74
-                       C187 79 181 88 178 98
-                       C177 105 182 108 188 105
-                       C196 100 205 88 209 77
-                       C211 72 200 70 194 74Z"
-                    fill="rgba(255,255,255,.52)"/>
+                    d="M194 72
+                       C188 77 183 84 181 93
+                       C179 99 184 102 189 99
+                       C196 95 203 85 207 76
+                       C209 71 199 68 194 72Z"
+                    fill="rgba(255,255,255,.50)"/>
             </g>
           </svg>
         </div>
       </div>
+
 
       <div class="content">
         <div class="left">
@@ -1227,20 +1278,8 @@
         <div class="right">
           <article class="card">
             <div class="logo-wrap">
-              <div class="monogram" aria-hidden="true">
-                <svg class="monogram-svg" viewBox="0 0 160 160" fill="none">
-                  <defs>
-                    <linearGradient id="monoGold" x1="26" y1="18" x2="118" y2="132" gradientUnits="userSpaceOnUse">
-                      <stop stop-color="#fff8e3"/>
-                      <stop offset=".45" stop-color="#f5df9f"/>
-                      <stop offset=".74" stop-color="#ddb76a"/>
-                      <stop offset="1" stop-color="#8a6227"/>
-                    </linearGradient>
-                  </defs>
-                  <circle cx="80" cy="80" r="58" stroke="url(#monoGold)" stroke-width="2.5" opacity=".35"/>
-                  <path d="M48 108V52h10l22 35 22-35h10v56h-10V70l-18 28h-8L58 70v38H48Z" fill="url(#monoGold)"/>
-                  <path d="M76 108l24-56h11l24 56h-11l-5.2-13H92.1l-5.2 13H76Zm19.8-22h19.2l-9.6-24-9.6 24Z" fill="url(#monoGold)" opacity=".88"/>
-                </svg>
+              <div class="monogram logo-frame" aria-hidden="true">
+                <img src="./logo.png" alt="Huseyn Allahverdiyev logo" class="logo-inside" />
               </div>
             </div>
 
