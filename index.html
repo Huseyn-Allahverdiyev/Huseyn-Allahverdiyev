@@ -9,31 +9,34 @@
   <title>Huseyn Allahverdiyev | Premium Dental Contact</title>
   <meta
     name="description"
-    content="Premium luxury dentist contact page for Huseyn Allahverdiyev."
+    content="Premium dental contact page for Huseyn Allahverdiyev."
   />
   <style>
     :root{
-      --navy-1:#060d18;
-      --navy-2:#0a1526;
-      --navy-3:#10233d;
-      --navy-4:#17385a;
+      --navy-1:#050b15;
+      --navy-2:#0a1627;
+      --navy-3:#102742;
+      --navy-4:#173b60;
 
-      --gold-1:#fff6d6;
-      --gold-2:#f6df99;
-      --gold-3:#ddb868;
-      --gold-4:#b98b3a;
-      --gold-5:#8a6426;
+      --champagne-1:#fff8e3;
+      --champagne-2:#f5df9f;
+      --champagne-3:#ddb76a;
+      --champagne-4:#b98a3b;
+      --champagne-5:#8a6227;
 
       --white:#f8fbff;
-      --text-soft:rgba(239,245,252,.84);
-      --text-muted:rgba(215,225,238,.68);
+      --text-soft:rgba(236,243,252,.88);
+      --text-muted:rgba(206,219,236,.72);
 
-      --glass:rgba(255,255,255,.07);
-      --stroke:rgba(255,255,255,.10);
-      --shadow-1:0 30px 80px rgba(0,0,0,.38);
-      --shadow-2:0 18px 40px rgba(0,0,0,.24);
+      --glass:rgba(255,255,255,.06);
+      --glass-2:rgba(255,255,255,.04);
+      --stroke:rgba(255,255,255,.09);
 
-      --radius-xl:32px;
+      --shadow-xl:0 26px 70px rgba(0,0,0,.34);
+      --shadow-lg:0 18px 44px rgba(0,0,0,.22);
+      --shadow-md:0 10px 24px rgba(0,0,0,.16);
+
+      --radius-xl:30px;
       --radius-lg:22px;
       --radius-md:18px;
       --radius-sm:14px;
@@ -41,82 +44,37 @@
       --ease:cubic-bezier(.2,.8,.2,1);
     }
 
-    *{ box-sizing:border-box; margin:0; padding:0; }
-
-    html, body{
-      width:100%;
-      height:100%;
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
     }
 
-    html{
-      scroll-behavior:smooth;
+    html,body{
+      width:100%;
+      min-height:100%;
     }
 
     body{
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-      background:
-        radial-gradient(circle at 12% 14%, rgba(246,223,153,.10), transparent 22%),
-        radial-gradient(circle at 86% 12%, rgba(221,184,104,.10), transparent 24%),
-        radial-gradient(circle at 82% 82%, rgba(255,246,214,.06), transparent 24%),
-        linear-gradient(135deg, var(--navy-1), var(--navy-2), var(--navy-3), var(--navy-4));
       color:var(--white);
-      min-height:100vh;
-      overflow:hidden;
-      position:relative;
+      background:
+        radial-gradient(circle at 10% 14%, rgba(245,223,159,.08), transparent 22%),
+        radial-gradient(circle at 86% 12%, rgba(221,183,106,.08), transparent 24%),
+        linear-gradient(135deg, var(--navy-1), var(--navy-2), var(--navy-3), var(--navy-4));
+      overflow-x:hidden;
       -webkit-font-smoothing:antialiased;
       text-rendering:optimizeLegibility;
+      position:relative;
     }
 
     body.rtl{
       direction:rtl;
     }
 
-    /* ---------------------------
-       PERFORMANCE-FRIENDLY GOLD PARTICLES
-    --------------------------- */
-    .particles{
-      position:absolute;
-      inset:0;
-      overflow:hidden;
-      pointer-events:none;
-      z-index:0;
-    }
-
-    .particle{
-      position:absolute;
-      width:6px;
-      height:6px;
-      border-radius:50%;
-      background:radial-gradient(circle at 35% 35%, #fffdf4 0%, var(--gold-2) 45%, rgba(221,184,104,.2) 100%);
-      box-shadow:
-        0 0 10px rgba(246,223,153,.35),
-        0 0 18px rgba(246,223,153,.18);
-      opacity:.52;
-      animation:floatGold linear infinite;
-      will-change:transform, opacity;
-    }
-
-    .particle.small{ width:4px; height:4px; opacity:.40; }
-    .particle.large{ width:8px; height:8px; opacity:.64; }
-
-    @keyframes floatGold{
-      0%{
-        transform:translate3d(0, 0, 0) scale(.95);
-        opacity:0;
-      }
-      8%{ opacity:.52; }
-      50%{
-        transform:translate3d(var(--drift-x), -42vh, 0) scale(1.08);
-      }
-      100%{
-        transform:translate3d(calc(var(--drift-x) * 1.3), -88vh, 0) scale(.92);
-        opacity:0;
-      }
-    }
-
-    /* ---------------------------
-       CINEMATIC INTRO
-    --------------------------- */
+    /* --------------------------------
+       INTRO
+    -------------------------------- */
     .intro{
       position:fixed;
       inset:0;
@@ -124,9 +82,9 @@
       display:grid;
       place-items:center;
       background:
-        radial-gradient(circle at center, rgba(246,223,153,.09), transparent 16%),
-        linear-gradient(180deg, rgba(5,10,18,.98), rgba(5,10,18,.995));
-      transition:opacity .8s ease, visibility .8s ease;
+        radial-gradient(circle at center, rgba(245,223,159,.08), transparent 16%),
+        linear-gradient(180deg, rgba(4,8,15,.98), rgba(4,8,15,.995));
+      transition:opacity .7s ease, visibility .7s ease;
     }
 
     .intro.hide{
@@ -138,7 +96,7 @@
     .intro-inner{
       width:min(900px, 90vw);
       text-align:center;
-      padding:20px;
+      padding:16px;
     }
 
     .intro-badge{
@@ -147,14 +105,13 @@
       gap:10px;
       padding:12px 18px;
       border-radius:999px;
-      border:1px solid rgba(246,223,153,.18);
+      border:1px solid rgba(245,223,159,.18);
       background:rgba(255,255,255,.03);
-      color:rgba(255,240,200,.92);
-      letter-spacing:.20em;
+      color:rgba(255,243,214,.92);
       text-transform:uppercase;
+      letter-spacing:.18em;
       font-size:11px;
-      margin-bottom:24px;
-      backdrop-filter:blur(8px);
+      margin-bottom:22px;
       animation:fadeUp .8s var(--ease) both;
     }
 
@@ -163,12 +120,12 @@
       width:8px;
       height:8px;
       border-radius:50%;
-      background:radial-gradient(circle at 35% 35%, #fffef8, var(--gold-2));
-      box-shadow:0 0 12px rgba(246,223,153,.8);
+      background:radial-gradient(circle at 35% 35%, #fffef8, var(--champagne-2));
+      box-shadow:0 0 10px rgba(245,223,159,.75);
     }
 
     .intro-title{
-      font-size:clamp(40px, 7vw, 86px);
+      font-size:clamp(38px, 7vw, 84px);
       line-height:.92;
       letter-spacing:-.06em;
       font-weight:900;
@@ -179,20 +136,19 @@
     .intro-line{
       display:block;
       opacity:0;
-      transform:translateY(26px);
-      animation:lineReveal .9s var(--ease) forwards;
+      transform:translateY(22px);
+      animation:lineReveal .85s var(--ease) forwards;
     }
 
-    .intro-line:nth-child(1){ animation-delay:.12s; }
-    .intro-line:nth-child(2){ animation-delay:.32s; }
-    .intro-line:nth-child(3){ animation-delay:.52s; }
+    .intro-line:nth-child(1){ animation-delay:.08s; }
+    .intro-line:nth-child(2){ animation-delay:.26s; }
+    .intro-line:nth-child(3){ animation-delay:.44s; }
 
     .gold-text{
-      background:linear-gradient(180deg, var(--gold-1), var(--gold-2) 40%, var(--gold-3) 70%, var(--gold-5));
+      background:linear-gradient(180deg, var(--champagne-1), var(--champagne-2) 40%, var(--champagne-3) 72%, var(--champagne-5));
       -webkit-background-clip:text;
       background-clip:text;
       color:transparent;
-      filter:drop-shadow(0 5px 14px rgba(221,184,104,.12));
     }
 
     .intro-sub{
@@ -202,31 +158,32 @@
       font-size:clamp(14px, 1.4vw, 18px);
       line-height:1.8;
       opacity:0;
-      transform:translateY(18px);
-      animation:fadeUp .9s var(--ease) forwards .72s;
+      transform:translateY(16px);
+      animation:fadeUp .85s var(--ease) forwards .62s;
     }
 
     .intro-bar{
-      width:min(320px, 72vw);
+      width:min(320px, 74vw);
       height:4px;
-      margin:28px auto 0;
+      margin:26px auto 0;
       border-radius:999px;
       background:rgba(255,255,255,.08);
       overflow:hidden;
       opacity:0;
-      animation:fadeUp .9s var(--ease) forwards .92s;
+      animation:fadeUp .9s var(--ease) forwards .78s;
     }
 
     .intro-bar span{
       display:block;
       height:100%;
       width:0%;
-      background:linear-gradient(90deg, var(--gold-5), var(--gold-2), var(--gold-1));
-      box-shadow:0 0 16px rgba(246,223,153,.22);
-      animation:introLoad 1.45s ease forwards .25s;
+      background:linear-gradient(90deg, var(--champagne-5), var(--champagne-2), var(--champagne-1));
+      animation:introLoad 1.35s ease forwards .18s;
     }
 
-    @keyframes introLoad{ to{ width:100%; } }
+    @keyframes introLoad{
+      to{ width:100%; }
+    }
 
     @keyframes lineReveal{
       to{
@@ -242,57 +199,97 @@
       }
     }
 
-    /* ---------------------------
-       PAGE WRAPPER
-    --------------------------- */
+    /* --------------------------------
+       PARTICLES
+    -------------------------------- */
+    .particles{
+      position:absolute;
+      inset:0;
+      overflow:hidden;
+      pointer-events:none;
+      z-index:0;
+    }
+
+    .particle{
+      position:absolute;
+      width:6px;
+      height:6px;
+      border-radius:50%;
+      background:radial-gradient(circle at 35% 35%, #fffef8, var(--champagne-2));
+      box-shadow:
+        0 0 8px rgba(245,223,159,.32),
+        0 0 14px rgba(245,223,159,.14);
+      opacity:.45;
+      animation:floatGold linear infinite;
+      will-change:transform, opacity;
+    }
+
+    .particle.small{ width:4px; height:4px; opacity:.34; }
+    .particle.large{ width:8px; height:8px; opacity:.56; }
+
+    @keyframes floatGold{
+      0%{
+        transform:translate3d(0,0,0) scale(.95);
+        opacity:0;
+      }
+      8%{ opacity:.45; }
+      50%{
+        transform:translate3d(var(--dx), -42vh, 0) scale(1.05);
+      }
+      100%{
+        transform:translate3d(calc(var(--dx) * 1.25), -90vh, 0) scale(.9);
+        opacity:0;
+      }
+    }
+
+    /* --------------------------------
+       PAGE
+    -------------------------------- */
     .page{
       position:relative;
       z-index:2;
-      width:100%;
       min-height:100vh;
       display:grid;
       place-items:center;
-      padding:18px;
+      padding:16px;
     }
 
     .shell{
       position:relative;
       width:min(1220px, 100%);
-      min-height:min(760px, calc(100vh - 36px));
-      border-radius:34px;
+      min-height:min(760px, calc(100vh - 32px));
+      border-radius:32px;
       overflow:hidden;
       background:
-        linear-gradient(145deg, rgba(255,255,255,.06), rgba(255,255,255,.025));
+        linear-gradient(145deg, rgba(255,255,255,.06), rgba(255,255,255,.022));
       border:1px solid rgba(255,255,255,.08);
-      box-shadow:var(--shadow-1);
-      backdrop-filter:blur(14px);
-      -webkit-backdrop-filter:blur(14px);
+      box-shadow:var(--shadow-xl);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
       display:flex;
       flex-direction:column;
-      justify-content:space-between;
     }
 
     .shell::before{
       content:"";
       position:absolute;
       inset:0;
-      background:
-        linear-gradient(120deg, rgba(255,255,255,.08), transparent 25%, transparent 75%, rgba(246,223,153,.04));
+      background:linear-gradient(120deg, rgba(255,255,255,.07), transparent 26%, transparent 72%, rgba(245,223,159,.035));
       pointer-events:none;
     }
 
-    /* ---------------------------
-       TOP BAR
-    --------------------------- */
+    /* --------------------------------
+       TOPBAR
+    -------------------------------- */
     .topbar{
       position:relative;
       z-index:3;
       display:flex;
-      align-items:center;
       justify-content:space-between;
-      gap:14px;
-      padding:18px 18px 0;
+      align-items:center;
+      gap:12px;
       flex-wrap:wrap;
+      padding:16px 16px 0;
     }
 
     .brand-pill{
@@ -305,10 +302,9 @@
       border:1px solid rgba(255,255,255,.08);
       color:rgba(255,243,214,.92);
       text-transform:uppercase;
-      letter-spacing:.16em;
+      letter-spacing:.14em;
       font-size:11px;
-      box-shadow:0 8px 24px rgba(0,0,0,.16);
-      backdrop-filter:blur(8px);
+      box-shadow:var(--shadow-md);
     }
 
     .brand-pill::before{
@@ -316,8 +312,9 @@
       width:8px;
       height:8px;
       border-radius:50%;
-      background:radial-gradient(circle at 35% 35%, #fffdf5, var(--gold-2));
-      box-shadow:0 0 10px rgba(246,223,153,.8);
+      background:radial-gradient(circle at 35% 35%, #fffef8, var(--champagne-2));
+      box-shadow:0 0 10px rgba(245,223,159,.75);
+      flex:0 0 auto;
     }
 
     .lang-switch{
@@ -330,20 +327,16 @@
       appearance:none;
       border:none;
       cursor:pointer;
-      padding:10px 14px;
       min-width:52px;
+      padding:10px 14px;
       border-radius:999px;
       background:rgba(255,255,255,.05);
       border:1px solid rgba(255,255,255,.08);
-      color:var(--white);
+      color:#fff;
       font-size:12px;
-      letter-spacing:.12em;
       text-transform:uppercase;
-      transition:
-        transform .28s var(--ease),
-        background .28s ease,
-        border-color .28s ease,
-        color .28s ease;
+      letter-spacing:.1em;
+      transition:transform .25s var(--ease), background .25s ease, border-color .25s ease;
     }
 
     .lang-btn:hover{
@@ -352,91 +345,89 @@
     }
 
     .lang-btn.active{
-      background:linear-gradient(180deg, rgba(246,223,153,.20), rgba(185,139,58,.12));
-      border-color:rgba(246,223,153,.24);
-      color:#fff6d8;
+      background:linear-gradient(180deg, rgba(245,223,159,.18), rgba(185,138,59,.10));
+      border-color:rgba(245,223,159,.20);
+      color:#fff5d7;
     }
 
-    /* ---------------------------
-       MAIN CONTENT
-    --------------------------- */
+    /* --------------------------------
+       CONTENT
+    -------------------------------- */
     .content{
       position:relative;
       z-index:2;
       display:grid;
-      grid-template-columns:1.1fr .9fr;
+      grid-template-columns:minmax(0, 1.05fr) minmax(340px, .95fr);
+      gap:22px;
       align-items:center;
-      gap:18px;
-      padding:18px;
+      padding:18px 16px 16px;
       flex:1;
-      min-height:0;
     }
 
     .left{
       position:relative;
       z-index:2;
-      padding:10px 10px 10px 6px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
+      padding:8px 8px 8px 4px;
+      min-width:0;
     }
 
     .eyebrow{
       display:inline-flex;
       align-items:center;
       gap:10px;
-      width:max-content;
       padding:12px 16px;
       border-radius:999px;
       background:rgba(255,255,255,.05);
       border:1px solid rgba(255,255,255,.08);
-      color:rgba(255,240,205,.92);
+      color:rgba(255,241,205,.92);
       font-size:11px;
       text-transform:uppercase;
-      letter-spacing:.18em;
+      letter-spacing:.17em;
       margin-bottom:18px;
-      box-shadow:0 10px 24px rgba(0,0,0,.14);
+      box-shadow:var(--shadow-md);
+      max-width:100%;
     }
 
     .eyebrow i{
       width:8px;
       height:8px;
       border-radius:50%;
-      background:radial-gradient(circle at 35% 35%, #fffef8, var(--gold-2));
-      box-shadow:0 0 12px rgba(246,223,153,.78);
-      display:inline-block;
+      background:radial-gradient(circle at 35% 35%, #fffef8, var(--champagne-2));
+      box-shadow:0 0 10px rgba(245,223,159,.75);
       flex:0 0 auto;
     }
 
     .hero-title{
-      font-size:clamp(34px, 5.6vw, 68px);
+      font-size:clamp(34px, 5.5vw, 68px);
       line-height:.94;
       letter-spacing:-.055em;
       font-weight:900;
-      max-width:10ch;
-      text-wrap:balance;
+      max-width:11ch;
       margin-bottom:18px;
+      text-wrap:balance;
     }
 
     .hero-title .soft{
       display:block;
       color:#f9fbff;
-      opacity:.96;
     }
 
     .hero-title .gold{
       display:block;
-      background:linear-gradient(180deg, var(--gold-1), var(--gold-2) 40%, var(--gold-3) 70%, var(--gold-5));
+      background:linear-gradient(180deg, var(--champagne-1), var(--champagne-2) 38%, var(--champagne-3) 70%, var(--champagne-5));
       -webkit-background-clip:text;
       background-clip:text;
       color:transparent;
     }
 
     .hero-desc{
-      max-width:58ch;
+      max-width:60ch;
       color:var(--text-soft);
       font-size:15.5px;
-      line-height:1.85;
+      line-height:1.82;
+      overflow-wrap:anywhere;
+      word-break:normal;
+      hyphens:auto;
     }
 
     .service-tags{
@@ -450,61 +441,64 @@
       display:inline-flex;
       align-items:center;
       gap:10px;
-      min-height:46px;
-      padding:12px 15px;
+      min-height:44px;
+      padding:11px 15px;
       border-radius:999px;
       background:rgba(255,255,255,.05);
       border:1px solid rgba(255,255,255,.08);
-      color:rgba(248,250,255,.88);
+      color:rgba(246,250,255,.9);
       font-size:14px;
-      box-shadow:0 10px 24px rgba(0,0,0,.12);
+      box-shadow:var(--shadow-md);
+      overflow-wrap:anywhere;
+      word-break:break-word;
+      hyphens:auto;
+      max-width:100%;
     }
 
     .tag-icon{
-      width:22px;
-      height:22px;
+      width:20px;
+      height:20px;
       border-radius:50%;
       display:grid;
       place-items:center;
-      background:linear-gradient(180deg, rgba(246,223,153,.16), rgba(255,255,255,.06));
-      color:#fff2c8;
+      background:linear-gradient(180deg, rgba(245,223,159,.16), rgba(255,255,255,.05));
+      color:#ffeab1;
       flex:0 0 auto;
     }
 
-    /* ---------------------------
-       TOOTH VISUAL
-    --------------------------- */
+    /* --------------------------------
+       ANATOMICAL TOOTH
+    -------------------------------- */
     .tooth-stage{
       position:absolute;
-      right:34%;
-      top:50%;
-      width:min(34vw, 420px);
+      left:2%;
+      top:52%;
+      width:min(25vw, 300px);
       aspect-ratio:1;
-      transform:translate(50%, -50%);
-      pointer-events:none;
-      opacity:.93;
+      transform:translateY(-50%);
       z-index:1;
-    }
-
-    .tooth-shadow{
-      position:absolute;
-      left:50%;
-      bottom:7%;
-      transform:translateX(-50%);
-      width:60%;
-      height:12%;
-      border-radius:50%;
-      background:radial-gradient(ellipse at center, rgba(0,0,0,.30), rgba(0,0,0,.06), transparent 72%);
-      filter:blur(10px);
-      animation:shadowPulse 5.8s ease-in-out infinite;
+      pointer-events:none;
+      opacity:.24;
     }
 
     .tooth-wrap{
       width:100%;
       height:100%;
-      animation:toothFloat 5.8s ease-in-out infinite;
-      filter:drop-shadow(0 28px 44px rgba(0,0,0,.22));
-      will-change:transform;
+      animation:toothFloat 6s ease-in-out infinite;
+      filter:drop-shadow(0 20px 28px rgba(0,0,0,.18));
+    }
+
+    .tooth-shadow{
+      position:absolute;
+      left:50%;
+      bottom:5%;
+      transform:translateX(-50%);
+      width:56%;
+      height:11%;
+      border-radius:50%;
+      background:radial-gradient(ellipse at center, rgba(0,0,0,.28), rgba(0,0,0,.06), transparent 72%);
+      filter:blur(8px);
+      animation:shadowPulse 6s ease-in-out infinite;
     }
 
     .tooth-svg{
@@ -513,67 +507,68 @@
       overflow:visible;
     }
 
-    .shine-1{ animation:shineMove 3.8s ease-in-out infinite; }
-    .shine-2{ animation:shineMove2 4.5s ease-in-out infinite; }
+    .tooth-shine-1{ animation:shineMove 4.2s ease-in-out infinite; }
+    .tooth-shine-2{ animation:shineMove2 5s ease-in-out infinite; }
 
     @keyframes toothFloat{
       0%,100%{ transform:translateY(0) rotate(-1deg); }
-      50%{ transform:translateY(-10px) rotate(1.2deg); }
+      50%{ transform:translateY(-8px) rotate(1deg); }
     }
 
     @keyframes shadowPulse{
-      0%,100%{ transform:translateX(-50%) scale(1); opacity:.24; }
-      50%{ transform:translateX(-50%) scale(.92); opacity:.16; }
+      0%,100%{ transform:translateX(-50%) scale(1); opacity:.22; }
+      50%{ transform:translateX(-50%) scale(.92); opacity:.14; }
     }
 
     @keyframes shineMove{
-      0%, 18%{ opacity:0; transform:translate(-10px, 10px); }
-      38%{ opacity:.92; transform:translate(0,0); }
-      58%{ opacity:.14; }
-      100%{ opacity:0; transform:translate(16px, -12px); }
+      0%,15%{ opacity:0; transform:translate(-10px, 8px); }
+      36%{ opacity:.82; transform:translate(0,0); }
+      58%{ opacity:.12; }
+      100%{ opacity:0; transform:translate(15px,-12px); }
     }
 
     @keyframes shineMove2{
-      0%, 12%{ opacity:0; transform:translate(-8px, 12px); }
-      42%{ opacity:.82; transform:translate(2px,-2px); }
-      62%{ opacity:.18; }
+      0%,10%{ opacity:0; transform:translate(-7px, 10px); }
+      42%{ opacity:.68; transform:translate(2px,-1px); }
+      64%{ opacity:.14; }
       100%{ opacity:0; transform:translate(14px,-14px); }
     }
 
-    /* ---------------------------
+    /* --------------------------------
        CARD
-    --------------------------- */
+    -------------------------------- */
     .right{
       position:relative;
       z-index:2;
       display:flex;
       justify-content:center;
       align-items:center;
-      min-height:100%;
+      min-width:0;
     }
 
     .card{
-      width:min(460px, 100%);
       position:relative;
+      width:min(470px, 100%);
       padding:28px;
       border-radius:var(--radius-xl);
       background:
         linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.04));
       border:1px solid rgba(255,255,255,.09);
-      box-shadow:var(--shadow-2);
-      backdrop-filter:blur(14px);
-      -webkit-backdrop-filter:blur(14px);
+      box-shadow:var(--shadow-lg);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
       overflow:hidden;
+      z-index:2;
     }
 
     .card::before{
       content:"";
       position:absolute;
-      inset:auto -16% -34% auto;
-      width:230px;
-      height:230px;
+      inset:auto -14% -30% auto;
+      width:200px;
+      height:200px;
       border-radius:50%;
-      background:radial-gradient(circle at center, rgba(246,223,153,.14), rgba(246,223,153,.03), transparent 70%);
+      background:radial-gradient(circle at center, rgba(245,223,159,.11), rgba(245,223,159,.02), transparent 70%);
       filter:blur(10px);
       pointer-events:none;
     }
@@ -586,20 +581,20 @@
 
     .monogram{
       position:relative;
-      width:126px;
-      height:126px;
+      width:124px;
+      height:124px;
       border-radius:50%;
       display:grid;
       place-items:center;
       background:
-        radial-gradient(circle at 30% 25%, rgba(255,255,255,.20), rgba(255,255,255,.05)),
-        linear-gradient(180deg, rgba(246,223,153,.10), rgba(255,255,255,.04));
-      border:1px solid rgba(246,223,153,.18);
+        radial-gradient(circle at 30% 25%, rgba(255,255,255,.18), rgba(255,255,255,.05)),
+        linear-gradient(180deg, rgba(245,223,159,.10), rgba(255,255,255,.03));
+      border:1px solid rgba(245,223,159,.16);
       box-shadow:
         inset 0 2px 10px rgba(255,255,255,.08),
-        0 14px 36px rgba(0,0,0,.22);
+        0 14px 30px rgba(0,0,0,.18);
       overflow:hidden;
-      animation:logoFloat 5.4s ease-in-out infinite;
+      animation:logoFloat 5.6s ease-in-out infinite;
     }
 
     .monogram::before{
@@ -607,20 +602,27 @@
       position:absolute;
       inset:8px;
       border-radius:50%;
-      border:1px solid rgba(246,223,153,.14);
+      border:1px solid rgba(245,223,159,.14);
     }
 
     .monogram::after{
       content:"";
       position:absolute;
       inset:-10%;
-      background:linear-gradient(120deg, transparent 20%, rgba(255,246,214,.18) 48%, transparent 78%);
+      background:linear-gradient(120deg, transparent 22%, rgba(255,248,227,.16) 48%, transparent 76%);
       transform:translateX(-130%) rotate(12deg);
-      animation:monogramSweep 3.6s ease-in-out infinite;
+      animation:monoSweep 3.8s ease-in-out infinite;
     }
 
-    @keyframes monogramSweep{
-      0%, 18%{ transform:translateX(-130%) rotate(12deg); }
+    .monogram-svg{
+      width:72%;
+      height:72%;
+      position:relative;
+      z-index:1;
+    }
+
+    @keyframes monoSweep{
+      0%,18%{ transform:translateX(-130%) rotate(12deg); }
       45%{ transform:translateX(130%) rotate(12deg); }
       100%{ transform:translateX(130%) rotate(12deg); }
     }
@@ -630,21 +632,15 @@
       50%{ transform:translateY(-4px); }
     }
 
-    .monogram-svg{
-      width:72%;
-      height:72%;
-      position:relative;
-      z-index:1;
-      filter:drop-shadow(0 4px 10px rgba(0,0,0,.12));
-    }
-
     .doctor-name{
       text-align:center;
-      font-size:clamp(28px, 2.8vw, 36px);
-      line-height:1.06;
+      font-size:clamp(28px, 3vw, 36px);
+      line-height:1.08;
       letter-spacing:-.04em;
       font-weight:900;
-      color:#fff;
+      overflow-wrap:anywhere;
+      word-break:break-word;
+      hyphens:auto;
     }
 
     .doctor-role{
@@ -653,7 +649,11 @@
       color:rgba(255,240,205,.88);
       font-size:13px;
       text-transform:uppercase;
-      letter-spacing:.20em;
+      letter-spacing:.18em;
+      line-height:1.55;
+      overflow-wrap:anywhere;
+      word-break:break-word;
+      hyphens:auto;
     }
 
     .doctor-meta{
@@ -672,7 +672,11 @@
       border:1px solid rgba(255,255,255,.07);
       color:var(--text-soft);
       font-size:14px;
-      line-height:1.6;
+      line-height:1.65;
+      overflow-wrap:anywhere;
+      word-break:break-word;
+      hyphens:auto;
+      min-width:0;
     }
 
     .meta-row svg{
@@ -680,14 +684,14 @@
       height:18px;
       flex:0 0 auto;
       margin-top:2px;
-      color:#ffe7a5;
+      color:#ffe9aa;
     }
 
     .divider{
       width:100%;
       height:1px;
       margin:20px 0;
-      background:linear-gradient(90deg, transparent, rgba(246,223,153,.24), transparent);
+      background:linear-gradient(90deg, transparent, rgba(245,223,159,.24), transparent);
     }
 
     .actions{
@@ -701,31 +705,28 @@
       align-items:center;
       justify-content:center;
       gap:12px;
-      min-height:58px;
       width:100%;
-      padding:14px 18px;
+      min-height:58px;
+      padding:14px 16px;
       border-radius:18px;
       text-decoration:none;
       color:#fff;
       background:
-        linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.04));
+        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
       border:1px solid rgba(255,255,255,.10);
       box-shadow:
         inset 0 1px 5px rgba(255,255,255,.06),
-        0 12px 28px rgba(0,0,0,.14);
+        0 12px 28px rgba(0,0,0,.13);
+      transition:transform .28s var(--ease), border-color .28s ease, box-shadow .28s ease;
       overflow:hidden;
-      transition:
-        transform .28s var(--ease),
-        border-color .28s ease,
-        box-shadow .28s ease,
-        background .28s ease;
+      min-width:0;
     }
 
     .btn::before{
       content:"";
       position:absolute;
       inset:0;
-      background:linear-gradient(120deg, transparent 20%, rgba(255,255,255,.14) 48%, transparent 78%);
+      background:linear-gradient(120deg, transparent 18%, rgba(255,255,255,.14) 48%, transparent 78%);
       transform:translateX(-130%);
       transition:transform .85s ease;
     }
@@ -736,40 +737,52 @@
 
     .btn:hover{
       transform:translateY(-3px);
-      border-color:rgba(246,223,153,.20);
+      border-color:rgba(245,223,159,.18);
       box-shadow:
         inset 0 1px 6px rgba(255,255,255,.08),
-        0 18px 34px rgba(0,0,0,.18);
+        0 18px 34px rgba(0,0,0,.16);
     }
 
     .btn.whatsapp{
       background:
-        linear-gradient(180deg, rgba(57,214,137,.20), rgba(255,255,255,.04));
+        linear-gradient(180deg, rgba(58,214,141,.18), rgba(255,255,255,.04));
     }
 
     .btn.instagram{
       background:
-        linear-gradient(180deg, rgba(246,223,153,.16), rgba(152,89,255,.08), rgba(255,255,255,.04));
+        linear-gradient(180deg, rgba(245,223,159,.14), rgba(140,94,255,.07), rgba(255,255,255,.04));
     }
 
     .btn-icon{
       width:22px;
       height:22px;
       flex:0 0 auto;
+      position:relative;
+      z-index:1;
     }
 
     .btn-label{
       font-size:16px;
       font-weight:800;
       letter-spacing:.01em;
+      position:relative;
+      z-index:1;
+      overflow-wrap:anywhere;
+      word-break:break-word;
+      hyphens:auto;
+      min-width:0;
     }
 
     .btn-meta{
       margin-left:auto;
       font-size:12px;
       text-transform:uppercase;
-      letter-spacing:.10em;
+      letter-spacing:.08em;
       opacity:.78;
+      position:relative;
+      z-index:1;
+      white-space:nowrap;
+      flex:0 0 auto;
     }
 
     body.rtl .btn-meta{
@@ -780,19 +793,53 @@
     .bottom-note{
       margin-top:16px;
       text-align:center;
-      color:rgba(220,230,243,.74);
+      color:rgba(212,224,238,.76);
       font-size:12px;
-      letter-spacing:.06em;
-      line-height:1.6;
+      line-height:1.65;
+      letter-spacing:.04em;
+      overflow-wrap:anywhere;
+      word-break:break-word;
+      hyphens:auto;
     }
 
-    /* ---------------------------
-       MOBILE
-    --------------------------- */
-    @media (max-width: 1040px){
+    /* --------------------------------
+       RTL
+    -------------------------------- */
+    body.rtl .left{
+      text-align:right;
+    }
+
+    body.rtl .hero-desc,
+    body.rtl .meta-row,
+    body.rtl .tag,
+    body.rtl .bottom-note{
+      text-align:right;
+    }
+
+    body.rtl .doctor-name,
+    body.rtl .doctor-role{
+      text-align:center;
+    }
+
+    body.rtl .eyebrow{
+      margin-left:auto;
+    }
+
+    body.rtl .service-tags{
+      justify-content:flex-end;
+    }
+
+    body.rtl .topbar{
+      flex-direction:row-reverse;
+    }
+
+    /* --------------------------------
+       RESPONSIVE
+    -------------------------------- */
+    @media (max-width: 1060px){
       .content{
         grid-template-columns:1fr;
-        gap:16px;
+        gap:18px;
       }
 
       .left{
@@ -802,7 +849,8 @@
       }
 
       .eyebrow{
-        margin:0 auto 16px;
+        margin-left:auto;
+        margin-right:auto;
       }
 
       .hero-title{
@@ -825,19 +873,20 @@
       }
 
       .tooth-stage{
-        width:min(48vw, 280px);
-        right:50%;
-        top:18%;
-        transform:translate(50%, -50%);
-        opacity:.34;
+        left:auto;
+        right:3%;
+        top:16%;
+        width:min(28vw, 210px);
+        transform:none;
+        opacity:.12;
+      }
+
+      body.rtl .service-tags{
+        justify-content:center;
       }
     }
 
     @media (max-width: 720px){
-      body{
-        overflow:auto;
-      }
-
       .page{
         padding:10px;
       }
@@ -853,6 +902,10 @@
         align-items:stretch;
       }
 
+      body.rtl .topbar{
+        flex-direction:column;
+      }
+
       .brand-pill{
         justify-content:center;
         width:100%;
@@ -864,6 +917,7 @@
 
       .content{
         padding:12px;
+        gap:14px;
         align-items:start;
       }
 
@@ -878,22 +932,22 @@
 
       .doctor-role{
         font-size:12px;
-        letter-spacing:.16em;
+        letter-spacing:.14em;
       }
 
       .hero-title{
-        font-size:clamp(32px, 10vw, 46px);
+        font-size:clamp(32px, 10.5vw, 46px);
         margin-bottom:14px;
       }
 
       .hero-desc{
         font-size:14px;
-        line-height:1.75;
+        line-height:1.72;
       }
 
       .tag{
         font-size:13px;
-        min-height:42px;
+        min-height:40px;
         padding:10px 13px;
       }
 
@@ -916,9 +970,14 @@
       }
 
       .tooth-stage{
-        width:56vw;
-        top:15%;
-        opacity:.22;
+        right:8px;
+        top:92px;
+        width:34vw;
+        opacity:.08;
+      }
+
+      .particle:nth-child(n+11){
+        display:none;
       }
 
       .intro-title{
@@ -928,9 +987,31 @@
       .intro-sub{
         line-height:1.6;
       }
+    }
 
-      .particle:nth-child(n+13){
-        display:none;
+    @media (max-width: 420px){
+      .doctor-name{
+        font-size:26px;
+      }
+
+      .brand-pill{
+        letter-spacing:.1em;
+        font-size:10px;
+      }
+
+      .eyebrow{
+        font-size:10px;
+        letter-spacing:.14em;
+      }
+
+      .hero-desc,
+      .meta-row{
+        font-size:13px;
+      }
+
+      .lang-btn{
+        min-width:46px;
+        padding:9px 12px;
       }
     }
 
@@ -944,40 +1025,37 @@
   </style>
 </head>
 <body>
-  <!-- Fast cinematic intro -->
+  <!-- Intro -->
   <div class="intro" id="intro" aria-hidden="true">
     <div class="intro-inner">
       <div class="intro-badge" id="introBadge">Baku Premium Dental Contact</div>
+
       <h1 class="intro-title" id="introTitle">
         <span class="intro-line gold-text">Luxury</span>
         <span class="intro-line">Dental</span>
         <span class="intro-line gold-text">Contact</span>
       </h1>
+
       <p class="intro-sub" id="introSub">
         Premium dental presentation with elegant motion, refined visuals, and fast contact access.
       </p>
+
       <div class="intro-bar"><span></span></div>
     </div>
   </div>
 
-  <!-- Floating gold particles -->
+  <!-- Gold particles -->
   <div class="particles" aria-hidden="true">
-    <span class="particle small"  style="left:6%;  bottom:-10%; animation-duration:18s; animation-delay:-3s;  --drift-x:24px;"></span>
-    <span class="particle"        style="left:12%; bottom:-14%; animation-duration:21s; animation-delay:-8s;  --drift-x:-18px;"></span>
-    <span class="particle large"  style="left:20%; bottom:-16%; animation-duration:24s; animation-delay:-4s;  --drift-x:20px;"></span>
-    <span class="particle small"  style="left:26%; bottom:-12%; animation-duration:19s; animation-delay:-11s; --drift-x:-16px;"></span>
-    <span class="particle"        style="left:34%; bottom:-11%; animation-duration:23s; animation-delay:-6s;  --drift-x:22px;"></span>
-    <span class="particle large"  style="left:42%; bottom:-18%; animation-duration:26s; animation-delay:-13s; --drift-x:-20px;"></span>
-    <span class="particle small"  style="left:50%; bottom:-15%; animation-duration:20s; animation-delay:-5s;  --drift-x:16px;"></span>
-    <span class="particle"        style="left:58%; bottom:-14%; animation-duration:22s; animation-delay:-7s;  --drift-x:-22px;"></span>
-    <span class="particle large"  style="left:66%; bottom:-13%; animation-duration:25s; animation-delay:-10s; --drift-x:18px;"></span>
-    <span class="particle small"  style="left:74%; bottom:-16%; animation-duration:18.5s; animation-delay:-9s; --drift-x:-14px;"></span>
-    <span class="particle"        style="left:82%; bottom:-11%; animation-duration:21.5s; animation-delay:-12s; --drift-x:20px;"></span>
-    <span class="particle large"  style="left:90%; bottom:-17%; animation-duration:24.5s; animation-delay:-2s; --drift-x:-18px;"></span>
-    <span class="particle small"  style="left:15%; bottom:-20%; animation-duration:28s; animation-delay:-15s; --drift-x:15px;"></span>
-    <span class="particle"        style="left:47%; bottom:-22%; animation-duration:29s; animation-delay:-14s; --drift-x:-15px;"></span>
-    <span class="particle small"  style="left:71%; bottom:-24%; animation-duration:27s; animation-delay:-16s; --drift-x:12px;"></span>
-    <span class="particle"        style="left:93%; bottom:-20%; animation-duration:30s; animation-delay:-18s; --drift-x:-12px;"></span>
+    <span class="particle small" style="left:8%; bottom:-10%; animation-duration:18s; animation-delay:-3s; --dx:18px;"></span>
+    <span class="particle" style="left:16%; bottom:-14%; animation-duration:22s; animation-delay:-8s; --dx:-16px;"></span>
+    <span class="particle large" style="left:26%; bottom:-16%; animation-duration:25s; animation-delay:-4s; --dx:14px;"></span>
+    <span class="particle small" style="left:38%; bottom:-12%; animation-duration:20s; animation-delay:-10s; --dx:-14px;"></span>
+    <span class="particle" style="left:49%; bottom:-18%; animation-duration:24s; animation-delay:-6s; --dx:18px;"></span>
+    <span class="particle large" style="left:60%; bottom:-15%; animation-duration:27s; animation-delay:-13s; --dx:-18px;"></span>
+    <span class="particle small" style="left:71%; bottom:-14%; animation-duration:21s; animation-delay:-9s; --dx:15px;"></span>
+    <span class="particle" style="left:82%; bottom:-12%; animation-duration:23s; animation-delay:-11s; --dx:-15px;"></span>
+    <span class="particle large" style="left:91%; bottom:-16%; animation-duration:26s; animation-delay:-5s; --dx:16px;"></span>
+    <span class="particle small" style="left:55%; bottom:-24%; animation-duration:29s; animation-delay:-15s; --dx:-12px;"></span>
   </div>
 
   <main class="page">
@@ -993,117 +1071,108 @@
         </div>
       </div>
 
-      <!-- Decorative realistic tooth -->
+      <!-- Anatomically inspired tooth -->
       <div class="tooth-stage" aria-hidden="true">
         <div class="tooth-shadow"></div>
         <div class="tooth-wrap">
-          <svg class="tooth-svg" viewBox="0 0 520 520" fill="none">
+          <svg class="tooth-svg" viewBox="0 0 420 420" fill="none">
             <defs>
-              <linearGradient id="toothFill" x1="126" y1="76" x2="360" y2="438" gradientUnits="userSpaceOnUse">
+              <linearGradient id="toothBody" x1="110" y1="58" x2="286" y2="350" gradientUnits="userSpaceOnUse">
                 <stop offset="0" stop-color="#ffffff"/>
-                <stop offset=".28" stop-color="#fbfdfd"/>
-                <stop offset=".60" stop-color="#eef5f6"/>
-                <stop offset="1" stop-color="#d9e2e7"/>
+                <stop offset=".28" stop-color="#f8fbfd"/>
+                <stop offset=".63" stop-color="#e9f0f5"/>
+                <stop offset="1" stop-color="#cfd8df"/>
               </linearGradient>
-
-              <linearGradient id="toothEdge" x1="326" y1="96" x2="418" y2="356" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="#f7fbfd"/>
-                <stop offset="1" stop-color="#cfd9de"/>
+              <linearGradient id="toothSide" x1="250" y1="96" x2="334" y2="300" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#f5f9fc"/>
+                <stop offset="1" stop-color="#cad4db"/>
               </linearGradient>
-
-              <linearGradient id="rootShade" x1="190" y1="278" x2="336" y2="462" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="#f4f8fa" stop-opacity="0"/>
-                <stop offset="1" stop-color="#bfcbd2" stop-opacity=".65"/>
+              <linearGradient id="toothRootShade" x1="166" y1="230" x2="270" y2="362" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#eef4f8" stop-opacity="0"/>
+                <stop offset="1" stop-color="#b8c5cf" stop-opacity=".62"/>
               </linearGradient>
-
-              <radialGradient id="toothGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                gradientTransform="translate(260 230) rotate(90) scale(210)">
-                <stop stop-color="#ffffff" stop-opacity=".20"/>
-                <stop offset=".55" stop-color="#ffffff" stop-opacity=".06"/>
-                <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
-              </radialGradient>
-
-              <filter id="toothDrop" x="40" y="42" width="438" height="438" filterUnits="userSpaceOnUse">
-                <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000000" flood-opacity=".24"/>
+              <filter id="toothDrop" x="40" y="40" width="340" height="340" filterUnits="userSpaceOnUse">
+                <feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#000" flood-opacity=".18"/>
               </filter>
             </defs>
 
-            <ellipse cx="260" cy="236" rx="154" ry="154" fill="url(#toothGlow)"/>
-
             <g filter="url(#toothDrop)">
-              <path d="M260 78
-                       C214 78 172 98 147 136
-                       C113 188 121 248 147 290
-                       C165 319 171 343 176 388
-                       C181 432 197 454 221 454
-                       C239 454 250 440 258 415
-                       L271 372
-                       L284 415
-                       C292 440 303 454 321 454
-                       C345 454 361 432 366 388
-                       C371 343 377 319 395 290
-                       C421 248 429 188 395 136
-                       C370 98 328 78 282 78
-                       C274 78 267 80 260 84
-                       C253 80 246 78 238 78
+              <!-- main molar body -->
+              <path d="M210 62
+                       C177 62 145 75 126 102
+                       C101 137 108 185 129 216
+                       C145 239 149 260 153 293
+                       C156 322 167 341 184 341
+                       C197 341 204 332 210 313
+                       L220 279
+                       L230 313
+                       C236 332 243 341 256 341
+                       C273 341 284 322 287 293
+                       C291 260 295 239 311 216
+                       C332 185 339 137 314 102
+                       C295 75 263 62 230 62
+                       C223 62 216 64 210 68
+                       C204 64 197 62 190 62
                        Z"
-                    fill="url(#toothFill)"/>
+                    fill="url(#toothBody)"/>
 
-              <path d="M306 92
-                       C347 102 379 126 397 156
-                       C422 198 416 249 396 285
-                       C381 312 374 332 371 370
-                       C368 408 357 433 340 443
-                       C344 428 347 410 349 393
-                       C354 347 361 325 379 295
-                       C402 258 407 207 388 170
-                       C373 140 346 114 306 92Z"
-                    fill="url(#toothEdge)" opacity=".74"/>
+              <!-- side contour -->
+              <path d="M245 73
+                       C274 79 297 95 311 117
+                       C331 149 327 187 312 214
+                       C300 236 295 252 293 281
+                       C291 309 283 327 271 334
+                       C274 322 276 309 278 295
+                       C282 262 288 246 302 222
+                       C320 194 324 157 310 129
+                       C299 106 279 87 245 73Z"
+                    fill="url(#toothSide)" opacity=".75"/>
 
-              <path d="M193 310
-                       C205 336 210 357 213 393
-                       C216 420 223 436 234 438
-                       C242 440 249 429 255 406
-                       L268 364
-                       L281 406
-                       C287 429 294 440 302 438
-                       C313 436 320 420 323 393
-                       C326 357 331 336 343 310
-                       C336 351 339 406 318 435
-                       C307 449 294 458 279 458
-                       C267 458 261 450 260 447
-                       C259 450 253 458 241 458
-                       C226 458 213 449 202 435
-                       C181 406 184 351 193 310Z"
-                    fill="url(#rootShade)"/>
+              <!-- root shading -->
+              <path d="M165 235
+                       C174 255 177 269 180 294
+                       C182 315 187 328 194 330
+                       C200 331 204 323 209 306
+                       L219 274
+                       L229 306
+                       C234 323 238 331 244 330
+                       C251 328 256 315 258 294
+                       C261 269 264 255 273 235
+                       C267 264 269 306 254 328
+                       C246 339 237 345 226 345
+                       C216 345 212 338 210 335
+                       C208 338 204 345 194 345
+                       C183 345 174 339 166 328
+                       C151 306 153 264 165 235Z"
+                    fill="url(#toothRootShade)"/>
 
-              <!-- realistic enamel highlights -->
-              <path class="shine-1"
-                    d="M184 138
-                       C165 158 156 188 160 223
-                       C162 236 173 238 180 228
-                       C188 217 193 201 199 181
-                       C205 162 214 142 230 122
-                       C235 116 228 108 220 110
-                       C207 113 195 123 184 138Z"
+              <!-- enamel highlights -->
+              <path class="tooth-shine-1"
+                    d="M154 108
+                       C139 126 132 149 135 174
+                       C136 184 145 186 151 178
+                       C157 170 161 158 165 143
+                       C170 129 176 114 189 99
+                       C193 95 186 89 179 91
+                       C169 94 160 100 154 108Z"
                     fill="rgba(255,255,255,.88)"/>
 
-              <path class="shine-2"
-                    d="M301 120
-                       C323 132 340 151 349 176
-                       C354 188 367 184 368 173
-                       C369 160 359 145 348 132
-                       C336 119 320 108 302 101
-                       C293 98 292 113 301 120Z"
+              <path class="tooth-shine-2"
+                    d="M243 98
+                       C260 107 273 121 280 139
+                       C284 148 294 145 295 136
+                       C296 126 288 114 279 104
+                       C270 95 257 87 244 83
+                       C237 81 236 93 243 98Z"
                     fill="rgba(255,255,255,.48)"/>
 
-              <path class="shine-1"
-                    d="M236 94
-                       C227 102 219 114 215 128
-                       C213 137 219 141 227 137
-                       C239 130 250 113 256 98
-                       C259 90 244 88 236 94Z"
-                    fill="rgba(255,255,255,.58)"/>
+              <path class="tooth-shine-1"
+                    d="M194 74
+                       C187 79 181 88 178 98
+                       C177 105 182 108 188 105
+                       C196 100 205 88 209 77
+                       C211 72 200 70 194 74Z"
+                    fill="rgba(255,255,255,.52)"/>
             </g>
           </svg>
         </div>
@@ -1158,25 +1227,24 @@
         <div class="right">
           <article class="card">
             <div class="logo-wrap">
-              <!-- Custom animated gold monogram -->
               <div class="monogram" aria-hidden="true">
                 <svg class="monogram-svg" viewBox="0 0 160 160" fill="none">
                   <defs>
                     <linearGradient id="monoGold" x1="26" y1="18" x2="118" y2="132" gradientUnits="userSpaceOnUse">
-                      <stop stop-color="#fff6d6"/>
-                      <stop offset=".45" stop-color="#f6df99"/>
-                      <stop offset=".74" stop-color="#ddb868"/>
-                      <stop offset="1" stop-color="#8a6426"/>
+                      <stop stop-color="#fff8e3"/>
+                      <stop offset=".45" stop-color="#f5df9f"/>
+                      <stop offset=".74" stop-color="#ddb76a"/>
+                      <stop offset="1" stop-color="#8a6227"/>
                     </linearGradient>
                   </defs>
-                  <circle cx="80" cy="80" r="59" stroke="url(#monoGold)" stroke-width="2.5" opacity=".35"/>
+                  <circle cx="80" cy="80" r="58" stroke="url(#monoGold)" stroke-width="2.5" opacity=".35"/>
                   <path d="M48 108V52h10l22 35 22-35h10v56h-10V70l-18 28h-8L58 70v38H48Z" fill="url(#monoGold)"/>
                   <path d="M76 108l24-56h11l24 56h-11l-5.2-13H92.1l-5.2 13H76Zm19.8-22h19.2l-9.6-24-9.6 24Z" fill="url(#monoGold)" opacity=".88"/>
                 </svg>
               </div>
             </div>
 
-            <h2 class="doctor-name">Huseyn Allahverdiyev</h2>
+            <h2 class="doctor-name" id="doctorName">Huseyn Allahverdiyev</h2>
             <div class="doctor-role" id="doctorRole">Dentist • Aesthetic & Preventive Dental Care</div>
 
             <div class="doctor-meta">
@@ -1198,13 +1266,7 @@
             <div class="divider"></div>
 
             <div class="actions">
-              <a
-                class="btn whatsapp"
-                href="https://wa.me/994514151594"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="WhatsApp"
-              >
+              <a class="btn whatsapp" href="https://wa.me/994514151594" target="_blank" rel="noopener noreferrer">
                 <span class="btn-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="currentColor">
                     <path d="M20.52 3.48A11.87 11.87 0 0 0 12.07 0C5.53 0 .2 5.28.2 11.78c0 2.08.55 4.12 1.6 5.92L0 24l6.5-1.7a11.9 11.9 0 0 0 5.57 1.42h.01c6.54 0 11.87-5.28 11.87-11.78 0-3.14-1.23-6.09-3.43-8.46ZM12.08 21.7h-.01a9.95 9.95 0 0 1-5.07-1.39l-.37-.22-3.86 1.01 1.03-3.76-.24-.39a9.73 9.73 0 0 1-1.52-5.17c0-5.42 4.47-9.83 9.96-9.83 2.66 0 5.16 1.02 7.04 2.89a9.68 9.68 0 0 1 2.92 6.94c0 5.42-4.48 9.92-9.88 9.92Zm5.45-7.39c-.3-.15-1.8-.88-2.08-.98-.28-.1-.48-.15-.68.15-.2.29-.78.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.39-1.47-.88-.78-1.48-1.75-1.65-2.05-.17-.29-.02-.45.13-.6.14-.14.3-.37.45-.56.15-.2.2-.34.3-.58.1-.24.05-.44-.03-.59-.08-.15-.68-1.62-.94-2.22-.25-.58-.5-.5-.68-.51h-.58c-.2 0-.52.07-.8.36-.28.29-1.05 1.03-1.05 2.51s1.08 2.92 1.23 3.12c.15.19 2.13 3.41 5.26 4.65.74.31 1.32.5 1.78.64.75.24 1.44.2 1.98.12.6-.09 1.8-.73 2.06-1.44.25-.71.25-1.32.17-1.44-.08-.12-.28-.2-.58-.34Z"/>
@@ -1214,13 +1276,7 @@
                 <span class="btn-meta" id="waMeta">Message Now</span>
               </a>
 
-              <a
-                class="btn instagram"
-                href="https://instagram.com/stomahuseyn"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-              >
+              <a class="btn instagram" href="https://instagram.com/stomahuseyn" target="_blank" rel="noopener noreferrer">
                 <span class="btn-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="currentColor">
                     <path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 1.8A3.96 3.96 0 0 0 3.8 7.75v8.5a3.96 3.96 0 0 0 3.95 3.95h8.5a3.96 3.96 0 0 0 3.95-3.95v-8.5a3.96 3.96 0 0 0-3.95-3.95h-8.5Zm8.95 1.35a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.8A3.2 3.2 0 1 0 12 15.2 3.2 3.2 0 0 0 12 8.8Z"/>
@@ -1241,17 +1297,18 @@
   </main>
 
   <script>
-    // Fast intro dismissal
-    window.addEventListener("load", function(){
-      setTimeout(function(){
+    // intro
+    window.addEventListener("load", () => {
+      setTimeout(() => {
         document.getElementById("intro").classList.add("hide");
-      }, 1550);
+      }, 1400);
     });
 
-    // Language data (English default)
+    // translations
     const translations = {
       en: {
         dir: "ltr",
+        doctorName: "Huseyn Allahverdiyev",
         introBadge: "Baku Premium Dental Contact",
         introTitleLines: ["Luxury", "Dental", "Contact"],
         introSub: "Premium dental presentation with elegant motion, refined visuals, and fast contact access.",
@@ -1274,14 +1331,15 @@
       },
       az: {
         dir: "ltr",
+        doctorName: "Hüseyn Allahverdiyev",
         introBadge: "Bakı Premium Diş Həkimi Əlaqə",
         introTitleLines: ["Luxury", "Dental", "Contact"],
-        introSub: "Premium stomatoloji təqdimat, zərif hərəkət, güclü vizual üslub və sürətli əlaqə imkanı.",
+        introSub: "Premium stomatoloji təqdimat, zərif animasiya və sürətli əlaqə imkanı.",
         topPill: "Bakı Dental Aesthetics • Premium Əlaqə",
         eyebrow: "Estetik və Bərpaedici Stomatologiya",
         heroSoft: "Güvənli təbəssüm,",
         heroGold: "müasir diş baxımı.",
-        heroDesc: "Təbəssüm estetikası, ağız sağlamlığı, pasiyent komfortu və müasir müalicə yanaşmasına yönəlmiş fərdi stomatoloji xidmət. Konsultasiya, görüş və müalicə ilə bağlı birbaşa əlaqə.",
+        heroDesc: "Təbəssüm estetikası, ağız sağlamlığı, pasiyent komfortu və müasir müalicə standartlarına yönəlmiş fərdi stomatoloji xidmət. Konsultasiya, qəbul və müalicə ilə bağlı birbaşa əlaqə.",
         tag1: "Təbəssüm Dizaynı",
         tag2: "Profilaktik Baxım",
         tag3: "Diş Estetikası",
@@ -1296,9 +1354,10 @@
       },
       ru: {
         dir: "ltr",
+        doctorName: "Хусейн Аллахвердиев",
         introBadge: "Премиальный контакт стоматолога в Баку",
         introTitleLines: ["Luxury", "Dental", "Contact"],
-        introSub: "Премиальная стоматологическая презентация с элегантной анимацией, сильной визуальной подачей и быстрым доступом к связи.",
+        introSub: "Премиальная стоматологическая презентация с элегантной анимацией и быстрым доступом к связи.",
         topPill: "Baku Dental Aesthetics • Премиальный Контакт",
         eyebrow: "Эстетическая и восстановительная стоматология",
         heroSoft: "Уверенная улыбка,",
@@ -1318,20 +1377,21 @@
       },
       ar: {
         dir: "rtl",
+        doctorName: "حسين اللهفردييف",
         introBadge: "صفحة تواصل فاخرة لطبيب الأسنان في باكو",
         introTitleLines: ["Luxury", "Dental", "Contact"],
-        introSub: "عرض فاخر لطب الأسنان مع حركة أنيقة، هوية بصرية راقية، ووصول سريع للتواصل.",
+        introSub: "عرض فاخر لطب الأسنان مع حركة أنيقة ووصول سريع للتواصل.",
         topPill: "Baku Dental Aesthetics • تواصل فاخر",
         eyebrow: "طب الأسنان التجميلي والترميمي",
         heroSoft: "ابتسامة واثقة،",
         heroGold: "وعناية أسنان حديثة.",
-        heroDesc: "رعاية أسنان شخصية تركّز على جمال الابتسامة، صحة الفم، راحة المريض، ومعايير العلاج الحديثة. تواصل مباشر للاستشارة، الحجز، ومتابعة العلاج.",
+        heroDesc: "رعاية أسنان شخصية تركز على جمال الابتسامة وصحة الفم وراحة المريض ومعايير العلاج الحديثة. تواصل مباشر للاستشارة والحجز ومتابعة العلاج.",
         tag1: "تصميم الابتسامة",
         tag2: "العناية الوقائية",
         tag3: "تجميل الأسنان",
         doctorRole: "طبيب أسنان • عناية تجميلية ووقائية",
-        meta1: "تركيز على تصميم الابتسامة، الوقاية، وعلاج يضع المريض أولاً.",
-        meta2: "متاح للاستشارات، طلبات المواعيد، والتواصل المتعلق بالعلاج.",
+        meta1: "تركيز على تصميم الابتسامة والوقاية وعلاج يضع المريض أولاً.",
+        meta2: "متاح للاستشارات وطلبات المواعيد والتواصل المتعلق بالعلاج.",
         waLabel: "استشارة واتساب",
         waMeta: "راسل الآن",
         igLabel: "حساب إنستغرام",
@@ -1350,6 +1410,7 @@
     const tag1 = document.getElementById("tag1");
     const tag2 = document.getElementById("tag2");
     const tag3 = document.getElementById("tag3");
+    const doctorName = document.getElementById("doctorName");
     const doctorRole = document.getElementById("doctorRole");
     const meta1 = document.getElementById("meta1");
     const meta2 = document.getElementById("meta2");
@@ -1382,6 +1443,7 @@
       document.body.dir = t.dir;
       document.body.classList.toggle("rtl", t.dir === "rtl");
 
+      doctorName.textContent = t.doctorName;
       introBadge.textContent = t.introBadge;
       setIntroTitle(t.introTitleLines);
       introSub.textContent = t.introSub;
@@ -1407,12 +1469,10 @@
     }
 
     langButtons.forEach(btn => {
-      btn.addEventListener("click", function(){
-        applyLanguage(btn.dataset.lang);
-      });
+      btn.addEventListener("click", () => applyLanguage(btn.dataset.lang));
     });
 
-    // Default language = English
+    // default English
     applyLanguage("en");
   </script>
 </body>
