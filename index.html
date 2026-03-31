@@ -1763,44 +1763,103 @@
 
     // default English
     applyLanguage("en");
-    
 
+  </script>
+  <script>
+    (function () {
+      const LOG_ENDPOINT = "https://falling-moon-f950.johnjohnlu00.workers.dev";
     
+      function makeLog(eventType, extra = {}) {
+        return {
+          eventType,
+          page: location.href,
+          path: location.pathname,
+          referrer: document.referrer || "",
+          userAgent: navigator.userAgent,
+          language: navigator.language || "",
+          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "",
+          screen: `${window.screen.width}x${window.screen.height}`,
+          viewport: `${window.innerWidth}x${window.innerHeight}`,
+          extra
+        };
+      }
     
-    const LOG_ENDPOINT = "https://falling-moon-f950.johnjohnlu00.workers.dev";
+      function sendLog(payload) {
+        console.log("sendLog payload:", payload);
     
-    function makeLog(eventType, extra = {}) {
-      return {
-        eventType,
-        page: location.href,
-        path: location.pathname,
-        referrer: document.referrer || "",
-        userAgent: navigator.userAgent,
-        language: navigator.language || "",
-        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "",
-        screen: `${window.screen.width}x${window.screen.height}`,
-        viewport: `${window.innerWidth}x${window.innerHeight}`,
-        extra
-      };
-    }
+        fetch(LOG_ENDPOINT, {
+          method: "POST",
+          mode: "cors",
+          credentials: "omit",
+          keepalive: true,
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        })
+          .then(r => r.text())
+          .then(text => {
+            console.log("log response:", text);
+          })
+          .catch(err => {
+            console.error("log error:", err);
+          });
+      }
     
-    function sendLog(payload) {
-      fetch(LOG_ENDPOINT, {
-        method: "POST",
-        mode: "cors",
-        credentials: "omit",
-        keepalive: true,
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload)
-      })
-      .then(r => r.text())
-      .then(console.log)
-      .catch(console.error);
-    }
-
-
+      function initLogging() {
+        console.log("LOGGER INIT OK");
+    
+        // page enter
+        sendLog(makeLog("page_enter"));
+    
+        // WhatsApp
+        const waBtn = document.querySelector(".btn.whatsapp");
+        if (waBtn) {
+          console.log("WhatsApp button found");
+          waBtn.addEventListener("click", function () {
+            console.log("WhatsApp clicked");
+            sendLog(makeLog("click_whatsapp", {
+              target: "wa.me/994514151594"
+            }));
+          });
+        } else {
+          console.warn("WhatsApp button NOT found");
+        }
+    
+        // Instagram
+        const igBtn = document.querySelector(".btn.instagram");
+        if (igBtn) {
+          console.log("Instagram button found");
+          igBtn.addEventListener("click", function () {
+            console.log("Instagram clicked");
+            sendLog(makeLog("click_instagram", {
+              target: "instagram.com/stomahuseyn"
+            }));
+          });
+        } else {
+          console.warn("Instagram button NOT found");
+        }
+    
+        // Language buttons
+        const langBtns = document.querySelectorAll(".lang-btn");
+        console.log("Language buttons found:", langBtns.length);
+    
+        langBtns.forEach(btn => {
+          btn.addEventListener("click", function () {
+            console.log("Language clicked:", btn.dataset.lang);
+            sendLog(makeLog("click_language", {
+              selectedLanguage: btn.dataset.lang
+            }));
+          });
+        });
+      }
+    
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initLogging);
+      } else {
+        initLogging();
+      }
+    })();
   </script>
 </body>
 </html>
