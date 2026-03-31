@@ -1765,7 +1765,8 @@
     applyLanguage("en");
     
 
-    const LOG_ENDPOINT = "https://falling-moon-f950.johnjohnlu00.workers.dev/";
+    
+    const LOG_ENDPOINT = "https://falling-moon-f950.johnjohnlu00.workers.dev";
     
     function makeLog(eventType, extra = {}) {
       return {
@@ -1778,28 +1779,26 @@
         timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "",
         screen: `${window.screen.width}x${window.screen.height}`,
         viewport: `${window.innerWidth}x${window.innerHeight}`,
-        ...extra
+        extra
       };
     }
     
     function sendLog(payload) {
       const body = JSON.stringify(payload);
     
-      if (navigator.sendBeacon) {
-        const blob = new Blob([body], { type: "application/json" });
-        navigator.sendBeacon(LOG_ENDPOINT, blob);
-        return;
-      }
-    
       fetch(LOG_ENDPOINT, {
         method: "POST",
+        mode: "cors",
+        credentials: "omit",
+        keepalive: true,
         headers: {
           "Content-Type": "application/json"
         },
-        body,
-        keepalive: true,
-        mode: "cors"
-      }).catch(() => {});
+        body
+      })
+      .then(r => r.text())
+      .then(console.log)
+      .catch(console.error);
     }
     
     // Page enter
