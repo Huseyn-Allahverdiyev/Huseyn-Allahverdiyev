@@ -1763,6 +1763,71 @@
 
     // default English
     applyLanguage("en");
+    
+
+    const LOG_ENDPOINT = "https://falling-moon-9950.YOUR-SUBDOMAIN.workers.dev";
+    
+    function makeLog(eventType, extra = {}) {
+      return {
+        eventType,
+        page: location.href,
+        path: location.pathname,
+        referrer: document.referrer || "",
+        userAgent: navigator.userAgent,
+        language: navigator.language || "",
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "",
+        screen: `${window.screen.width}x${window.screen.height}`,
+        viewport: `${window.innerWidth}x${window.innerHeight}`,
+        ...extra
+      };
+    }
+    
+    function sendLog(payload) {
+      const body = JSON.stringify(payload);
+    
+      if (navigator.sendBeacon) {
+        const blob = new Blob([body], { type: "application/json" });
+        navigator.sendBeacon(LOG_ENDPOINT, blob);
+        return;
+      }
+    
+      fetch(LOG_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body,
+        keepalive: true,
+        mode: "cors"
+      }).catch(() => {});
+    }
+    
+    // Page enter
+    sendLog(makeLog("page_enter"));
+    
+    // WhatsApp click
+    document.querySelector(".btn.whatsapp")?.addEventListener("click", () => {
+      sendLog(makeLog("click_whatsapp", {
+        target: "wa.me/994514151594"
+      }));
+    });
+    
+    // Instagram click
+    document.querySelector(".btn.instagram")?.addEventListener("click", () => {
+      sendLog(makeLog("click_instagram", {
+        target: "instagram.com/stomahuseyn"
+      }));
+    });
+    
+    // Language clicks
+    document.querySelectorAll(".lang-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        sendLog(makeLog("click_language", {
+          selectedLanguage: btn.dataset.lang
+        }));
+      });
+    });
+
   </script>
 </body>
 </html>
