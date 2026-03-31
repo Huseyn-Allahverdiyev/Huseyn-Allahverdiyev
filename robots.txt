@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://contact-dr.github.io/Huseyn-Allahverdiyev/sitemap.xml
+Sitemap: https://huseyn-allahverdiyev.github.io/Huseyn-Allahverdiyev/sitemap.xml
