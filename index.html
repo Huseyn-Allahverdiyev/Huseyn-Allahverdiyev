@@ -1766,7 +1766,8 @@
     
 
     
-    const LOG_ENDPOINT = "https://falling-moon-f950.johnjohnlu00.workers.dev";
+    
+    onst LOG_ENDPOINT = "https://falling-moon-f950.johnjohnlu00.workers.dev";
     
     function makeLog(eventType, extra = {}) {
       return {
@@ -1784,8 +1785,6 @@
     }
     
     function sendLog(payload) {
-      const body = JSON.stringify(payload);
-    
       fetch(LOG_ENDPOINT, {
         method: "POST",
         mode: "cors",
@@ -1794,38 +1793,13 @@
         headers: {
           "Content-Type": "application/json"
         },
-        body
+        body: JSON.stringify(payload)
       })
       .then(r => r.text())
       .then(console.log)
       .catch(console.error);
     }
-    
-    // Page enter
-    sendLog(makeLog("page_enter"));
-    
-    // WhatsApp click
-    document.querySelector(".btn.whatsapp")?.addEventListener("click", () => {
-      sendLog(makeLog("click_whatsapp", {
-        target: "wa.me/994514151594"
-      }));
-    });
-    
-    // Instagram click
-    document.querySelector(".btn.instagram")?.addEventListener("click", () => {
-      sendLog(makeLog("click_instagram", {
-        target: "instagram.com/stomahuseyn"
-      }));
-    });
-    
-    // Language clicks
-    document.querySelectorAll(".lang-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        sendLog(makeLog("click_language", {
-          selectedLanguage: btn.dataset.lang
-        }));
-      });
-    });
+
 
   </script>
 </body>
