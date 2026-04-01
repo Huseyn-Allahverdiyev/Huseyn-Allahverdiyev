@@ -1766,16 +1766,20 @@
 
   </script>
   <script>
+
     (function () {
       const LOG_ENDPOINT = "https://falling-moon-f950.johnjohnlu00.workers.dev";
+    
+      // duplicate event-ləri azaltmaq üçün
+      const lastSentMap = new WeakMap();
     
       function makeLog(eventType, extra = {}) {
         return {
           eventType,
           page: location.href,
-          path: location.pathname,
+          path: location.pathname + location.search + location.hash,
           referrer: document.referrer || "",
-          userAgent: navigator.userAgent,
+          userAgent: navigator.userAgent || "",
           language: navigator.language || "",
           timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || "",
           screen: `${window.screen.width}x${window.screen.height}`,
@@ -1785,17 +1789,35 @@
       }
     
       function sendLog(payload) {
+        const body = JSON.stringify(payload);
         console.log("sendLog payload:", payload);
     
+        // 1) Mobil üçün ən yaxşı üsul
+        if (navigator.sendBeacon) {
+          try {
+            const blob = new Blob([body], {
+              type: "text/plain;charset=UTF-8"
+            });
+    
+            const ok = navigator.sendBeacon(LOG_ENDPOINT, blob);
+            console.log("sendBeacon result:", ok);
+    
+            if (ok) return;
+          } catch (err) {
+            console.warn("sendBeacon error:", err);
+          }
+        }
+    
+        // 2) Fallback
         fetch(LOG_ENDPOINT, {
           method: "POST",
           mode: "cors",
           credentials: "omit",
           keepalive: true,
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "text/plain;charset=UTF-8"
           },
-          body: JSON.stringify(payload)
+          body
         })
           .then(r => r.text())
           .then(text => {
@@ -1806,21 +1828,54 @@
           });
       }
     
+      function safeTrack(el, eventType, extraFactory) {
+        if (!el) return;
+    
+        const handler = function () {
+          const now = Date.now();
+          const last = lastSentMap.get(el) || 0;
+    
+          // eyni klik/touch event-ləri ard-arda iki dəfə düşməsin
+          if (now - last < 700) return;
+          lastSentMap.set(el, now);
+    
+          const extra = typeof extraFactory === "function" ? extraFactory(el) : {};
+          sendLog(makeLog(eventType, extra));
+        };
+    
+        // mobil üçün erkən event-lər
+        el.addEventListener("touchstart", handler, { passive: true });
+        el.addEventListener("pointerdown", handler);
+        el.addEventListener("click", handler);
+      }
+    
       function initLogging() {
         console.log("LOGGER INIT OK");
     
         // page enter
-        sendLog(makeLog("page_enter"));
+        setTimeout(() => {
+          sendLog(makeLog("page_enter"));
+        }, 200);
+    
+        // page gizlənəndə / user çıxanda
+        document.addEventListener("visibilitychange", function () {
+          if (document.visibilityState === "hidden") {
+            sendLog(makeLog("page_hidden"));
+          }
+        });
+    
+        window.addEventListener("pagehide", function () {
+          sendLog(makeLog("page_hide"));
+        });
     
         // WhatsApp
         const waBtn = document.querySelector(".btn.whatsapp");
         if (waBtn) {
           console.log("WhatsApp button found");
-          waBtn.addEventListener("click", function () {
-            console.log("WhatsApp clicked");
-            sendLog(makeLog("click_whatsapp", {
+          safeTrack(waBtn, "click_whatsapp", function () {
+            return {
               target: "wa.me/994514151594"
-            }));
+            };
           });
         } else {
           console.warn("WhatsApp button NOT found");
@@ -1830,11 +1885,10 @@
         const igBtn = document.querySelector(".btn.instagram");
         if (igBtn) {
           console.log("Instagram button found");
-          igBtn.addEventListener("click", function () {
-            console.log("Instagram clicked");
-            sendLog(makeLog("click_instagram", {
+          safeTrack(igBtn, "click_instagram", function () {
+            return {
               target: "instagram.com/stomahuseyn"
-            }));
+            };
           });
         } else {
           console.warn("Instagram button NOT found");
@@ -1845,11 +1899,10 @@
         console.log("Language buttons found:", langBtns.length);
     
         langBtns.forEach(btn => {
-          btn.addEventListener("click", function () {
-            console.log("Language clicked:", btn.dataset.lang);
-            sendLog(makeLog("click_language", {
-              selectedLanguage: btn.dataset.lang
-            }));
+          safeTrack(btn, "click_language", function () {
+            return {
+              selectedLanguage: btn.dataset.lang || ""
+            };
           });
         });
       }
@@ -1860,6 +1913,7 @@
         initLogging();
       }
     })();
+
   </script>
 </body>
 </html>
